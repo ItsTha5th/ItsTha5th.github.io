@@ -142,7 +142,7 @@ a {
 
 /* ========== albumArt Section ========== */
 
-#albumArt {
+#lucipurr {
     background-color: #1F1D1F;
     padding: 50px;
 }
@@ -290,6 +290,7 @@ a:visited {
     height: 24em;
 }
 
+
 /* ========== Beats Section ========== */
 
 #websites {
@@ -297,6 +298,7 @@ a:visited {
     padding-bottom: 50px;
     margin: auto;
 }
+
 .regText {
     color: #EAE7E9;
     font-family: 'Allerta', sans-serif;
@@ -304,7 +306,6 @@ a:visited {
     padding: 10px;
     text-indent: 50px;
 }
-
 
 #beatsText {
     color: #EAE7E9;
