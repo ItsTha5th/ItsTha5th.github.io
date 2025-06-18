@@ -1,255 +1,463 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="scroll-smooth">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127746980-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tha5thElement | Streamer & Musician</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    gtag('config', 'UA-127746980-1');
-  </script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ItsTha5th</title>
-  <link rel="stylesheet" href="stylesheets/general.css">
-  <link href="https://fonts.googleapis.com/css?family=Allerta|Bungee" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1677783422484507');
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1677783422484507&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+        }
 
-<!-- Begin Inspectlet Asynchronous Code -->
-<script type="text/javascript">
-(function() {
-window.__insp = window.__insp || [];
-__insp.push(['wid', 1161619464]);
-var ldinsp = function(){
-if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=1161619464&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
-setTimeout(ldinsp, 0);
-})();
-</script>
-<!-- End Inspectlet Asynchronous Code -->
+        /* Waluigi-inspired color theme! */
+        .hero-gradient {
+            background: radial-gradient(ellipse at top, #673AB7 0%, #000000 70%);
+        }
 
+        .glass-card {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .responsive-iframe {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .responsive-iframe iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Album Carousel styles */
+        .album-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .album-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .album-card {
+            flex: 0 0 80%;
+            scroll-snap-align: center;
+            margin-right: 1rem;
+        }
+        @media (min-width: 768px) { .album-card { flex: 0 0 45%; } }
+        @media (min-width: 1024px) { .album-card { flex: 0 0 30%; } }
+
+        /* Google Translate Widget Styling */
+        .skiptranslate iframe { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { background: #673AB7; padding: 8px; border-radius: 8px; }
+        #google_translate_element select { background-color: #673AB7; color: #F3E5F5; border: none; border-radius: 4px; padding: 4px; }
+
+        /* --- NEW: Animation Styles --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Utility class to apply animation */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Class to hide elements before they are animated */
+        .hidden-for-animation {
+            opacity: 0;
+        }
+    </style>
 </head>
+<body class="text-[#F3E5F5] antialiased">
 
-<body>
+    <!-- Google Translate Element (hidden until initialized) -->
+    <div id="google_translate_element" style="display: none;" class="fixed top-4 right-24 z-50"></div>
 
-  <div id="topSection">
-    <h1 id="title">Tha 5th Element</h1>
+    <!-- Header / Navigation -->
+    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-white tracking-tighter flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Logo" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
+                Tha<span class="text-[#EA80FC]">5th</span>Element
+            </a>
+            <div class="hidden md:flex items-center space-x-6 text-lg">
+                <a href="#stream" class="hover:text-[#EA80FC] transition-colors">Stream</a>
+                <a href="#music" class="hover:text-[#EA80FC] transition-colors">Music</a>
+                <a href="#schedule" class="hover:text-[#EA80FC] transition-colors">Schedule</a>
+                <a href="#about" class="hover:text-[#EA80FC] transition-colors">About</a>
+                <a href="#support" class="hover:text-[#EA80FC] transition-colors">Support</a>
+            </div>
+             <div class="flex items-center gap-4">
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="hidden md:block bg-[#673AB7] hover:bg-[#EA80FC] text-white font-bold py-2 px-4 rounded-lg transition-transform hover:scale-105">
+                    Follow
+                </a>
+                <div id="translate_button_container"></div> <!-- Placeholder for translate button -->
+            </div>
+        </nav>
+    </header>
 
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient py-20 text-center">
+            <div class="hero-content container mx-auto px-6">
+                 <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">
+                    Streamer, Gamer, Creative
+                </h1>
+                <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">
+                    From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!
+                </p>
+                <!-- Twitch Trailer Embed -->
+                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-[#673AB7]/50 shadow-2xl shadow-[#673AB7]/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
+                    <iframe 
+                        src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&autoplay=true&muted=true"
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen="true">
+                    </iframe>
+                </div>
+                <!-- Countdown Timer -->
+                <div class="mt-12 bg-black/50 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
+                    <h2 class="text-2xl font-bold text-[#EA80FC] mb-2">Next Stream Starts In:</h2>
+                    <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider">
+                        --:--:--:--
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!--        <p id="subTitleUpTop">Music. Plugins. Art. </p>-->
+        <!-- Twitch Stream Section -->
+        <section id="stream" class="py-20 bg-black animate-on-scroll hidden-for-animation">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">The Main Event</h2>
+                    <p class="text-stone-400 mt-2">Catch me live, or watch the latest VOD. The Cool Kids Club is always open!</p>
+                </div>
+                <div class="responsive-iframe rounded-xl overflow-hidden border-2 border-[#673AB7]/50 shadow-2xl shadow-[#673AB7]/20">
+                    <iframe 
+                        src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io"
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen="true"
+                        height="100%"
+                        width="100%">
+                    </iframe>
+                </div>
+            </div>
+        </section>
 
-    <!--  Social Media  -->
-
-    <div class="col-md-12" id="socialMediaSectionUpTop">
-      <ul class="social-network social-circle" id="socialMediaBar">
-        <li><a href="http://d3inthebuilding.bandcamp.com" class="icoMusic" title="Music"><i class="fa fa-music"></i></a></li>
-        <li><a href="http://Facebook.com/tha5thelement" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="https://twitter.com/tha5thelement" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="https://soundcloud.com/tha5thelementofficial" class="icoSoundcloud" title="Soundcloud"><i class="fa fa-soundcloud"></i></a></li>
-        <li><a href="https://Instagram.com/tha5thelement" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-      </ul>
-    </div>
-    <!--       text under the social Icons      -->
-
-    <p id="textUnderSocialMedia"> Producer, Rapper, Audio Engineer, Graphic Designer, Videographer, Web Developer, Programmer </p>
-<!--
-     <!--  <div class="col-md-12" id="YouTubeVideo">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UfffkqobwwY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div> -->
-
-
-    <!-- <div class="col-md-12" id="musicPlayer">
-
-      <iframe id="musicPlayeriFrame" src="http://bandcamp.com/EmbeddedPlayer/album=3041171556/size=small/bgcol=020002/linkcol=EFF9F0/tack=4113114214/artwork=none/transparent=true/" seamless></iframe>
-    </div> -->
-  </div>
-  --
-
-  <!-- newReleases -->
-
-<div id="newReleases">
-  <h1 id="title">Bars</h1><br>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4" id="leftBeatsSection">
-        <p>
-          <iframe src="https://open.spotify.com/embed/album/3Bpvz7SIrBjQZw3QZPgXzt" width="100%" height="450px" frameborder="0" s allowtransparency="true" allow="encrypted-media"></iframe>
-        </p>
-      </div>
-
-      <div class="col-md-4" id="midBeatsSection">
-        <h1 id="ffftitle">Late For Summer</h1>
-        <p class="regText">
-          After splitting with the label he cofounded, it was time to go back to the drawing board. This is a return to enjoying making songs with clever lines and catchy music. Meant to drop in the Summer, life happened as it does, and so here it is, Late for Summer.</p>
-        <p class="regText">
-          Featuring T-Makk & Doc Famous, with production from Yung Mordo, Ox The Moron, and Tha 5th Element, Late for Summer is a quick dive into the Summer Mentality of Tha 5th Element. </p>
-      </div>
-
-      <div class="col-md-4 " id="rightBeatsSection">
-        <img src="imgs/5th.jpg" alt="Tha 5th Element perfoming" />
-      </div>
-
-    </div>
-  </div>
-</div>
-
-  <!-- LuciPurr -->
-
-  <!-- <div id="lucipurr">
-    <h1 id="title">LuciPurr</h1><br>
-    <div class="container">
-      <p class="regText">New Plugin currently in early access featuring rich sounds and low CPU usage. Available as VST and AU formats. Mac and PC Compatible. </p>
-      <div class="row">
-        <div class="col-md-4" id="leftLucipurr">
-          <img src="imgs/LUCIEA.png" />
-        </div>
-        <div class="col-md-6" id="rightLucipurr">
-          <p>
-            Virtual Instrument by ItsTha5th featuring rich brass, strings, synths, drums, and more. Avalable now as Early Access for Mac and PC via VST or AU formats. To download, click the format you'd like, then fill out the for on the right to
-            recive your activation code
-          </p>
-        </div>
-        <div class="col-md-2" id="farrightLucipurr">
-          <img src="imgs/au-vst.png" />
-        </div>
-      </div> -->
-
-
-      <!--<div class="col-md-4 albumArt" id="leftTopSection">
-                    <img src="https://i1.sndcdn.com/artworks-000133908434-xu0nwe-t500x500.jpg" alt="Heavens art work" />
+        <!-- Schedule Section -->
+        <section id="schedule" class="py-20 bg-[#0c0a09] animate-on-scroll hidden-for-animation">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Stream Schedule</h2>
+                    <p class="text-stone-400 mt-2">Streams are Mon-Fri. Times shown in your local timezone!</p>
+                </div>
+                <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Schedule will be dynamically inserted here by JavaScript -->
+                    <div class="glass-card rounded-lg p-6 text-center animate-pulse">
+                        <p class="text-2xl font-bold text-white mt-1">Loading schedule...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Music Section -->
+        <section id="music" class="py-20 bg-black animate-on-scroll hidden-for-animation">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">The Soundtrack</h2>
+                    <p class="text-stone-400 mt-2">Latest album below. Scroll right for the full discography.</p>
                 </div>
 
-                <div class="col-md-4 albumArt" id="middleTopSection">
-                    <img src="https://f4.bcbits.com/img/a3800261555_10.jpg" alt="The Collection Volume One Artwork" />
+                <!-- Spotify Embed -->
+                 <div class="max-w-4xl mx-auto mb-12">
+                     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7fWOh38ZpIyGULlegbxULj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                 </div>
+
+                <!-- Album Carousel -->
+                <div id="album-carousel-container" class="album-carousel">
+                    <!-- Albums will be dynamically inserted here -->
                 </div>
+            </div>
+        </section>
 
-                <div class="col-md-4 albumArt" id="rightTopSection">
-                    <img src="http://f4.bcbits.com/img/a4033831534_10.jpg" alt="No Church In The Wild Artwork" />
+        <!-- Support Section -->
+        <section id="support" class="py-20 bg-[#0c0a09] animate-on-scroll hidden-for-animation">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Support The Creator</h2>
+                    <p class="text-stone-400 mt-2">Every little bit helps me continue doing what I love. Thank you!</p>
                 </div>
-
-                <div class="col-md-4 albumArt" id="leftTopSection">
-                    <img src="https://i1.sndcdn.com/artworks-000174944124-pt261f-t500x500.jpg" alt="Just Playin' Artwork" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                    <!-- Support cards with enhanced hover effects -->
+                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#EA80FC]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EA80FC]/20">
+                        <i class="fas fa-tshirt text-4xl text-[#EA80FC] mb-3"></i>
+                        <p class="text-xl font-bold text-white">Merch Store</p>
+                    </a>
+                    <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#03A9FF]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#03A9FF]/20">
+                        <i class="fas fa-coffee text-4xl text-[#03A9FF] mb-3"></i>
+                        <p class="text-xl font-bold text-white">Tip on Ko-fi</p>
+                    </a>
+                    <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#FFEB3B]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#FFEB3B]/20">
+                        <i class="fa-brands fa-paypal text-4xl text-[#FFEB3B] mb-3"></i>
+                        <p class="text-xl font-bold text-white">PayPal</p>
+                    </a>
+                    <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-white/10">
+                        <i class="fas fa-gamepad text-4xl text-white mb-3"></i>
+                        <p class="text-xl font-bold text-white">Game Deals</p>
+                    </a>
                 </div>
+            </div>
+        </section>
 
-                <div class="col-md-4 albumArt" id="middleTopSection">
-                    <img src="http://f4.bcbits.com/img/a2855133512_10.jpg" alt="The Collection Volume 2 Artwork" />
-                </div>
+        <!-- About & Specs Section -->
+        <section id="about" class="py-20 bg-black animate-on-scroll hidden-for-animation">
+            <div class="container mx-auto px-6">
+                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    <!-- About Me -->
+                     <div class="lg:col-span-2 glass-card rounded-xl p-8 shadow-lg">
+                        <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
+                        <div class="space-y-4 text-stone-300">
+                            <p>AYYYOOOOO! I’m 5th! Musician, Dad, Veteran, and More!</p>
+                            <p>My musical journey began when I was around 15 years old in a small bedroom "studio", where I discovered the magic of music and never looked back. I started streaming in 2020, and since then it's been non-stop high energy and building up a positive community we call the Cool Kids Club.</p>
+                            <p>When I’m not LIVE, you might find me watching Mixed Martial Arts, adding useless knowledge to my collection, or hanging out in other people's chats.</p>
+                            <p class="font-bold text-white">Got a question or want to join the fun? Jump into chat—let’s make some memories!</p>
+                        </div>
+                     </div>
+                     <!-- Specs -->
+                     <div class="lg:col-span-1 glass-card rounded-xl p-8 shadow-lg">
+                         <h3 class="text-2xl font-bold text-white mb-4">My Gear</h3>
+                         <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-[#EA80FC]">Computer Specs</h4>
+                                <ul class="list-disc list-inside text-stone-300">
+                                    <li>CPU: Intel Core i5 10400</li>
+                                    <li>RAM: 16GB DDR4</li>
+                                    <li>GPU: NVIDIA GeForce RTX 3060</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#EA80FC]">Audio Specs</h4>
+                                <ul class="list-disc list-inside text-stone-300">
+                                    <li>Mic: Audio-Technica AT1035</li>
+                                    <li>Interface: Focusrite Scarlett 6i6</li>
+                                    <li>MIDI: Novation FLKey37, Akai FIRE</li>
+                                </ul>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+            </div>
+        </section>
 
-                <div class="col-md-4 albumArt" id="rightTopSection">
-                    <img src="http://f4.bcbits.com/img/a2234638939_10.jpg" alt="The Beat Tape" />
-                </div> -->
-    </div>
-  </div>
+    </main>
 
-  <!-- beats -->
-
-  <div id="beats">
-    <h1 id="title">Beats</h1><br>
-    <div class="container">
-      <p id="beatsText" class="regText">You're a unique artist, so why use generic songs from producers who don't share your vision for your music? The beats below are from my latest release feauturing Boom Bap, Pop, Trap Anthems, Street Singles, JungleTrap and more, with knocking kicks and booming bass, and are
-        sure to provide you with radio quality sound without compromising your integrity as an artist. Other projects feature Boom-Bap, EDM, Trap, Pop, R&B, and a variety of genres all across the spectrum. Rates start as low as $25 USD per lease. Mixing and Mastering services are also available. <a href="mailto:ItsTha5th@Gmail.com​?Subject=5th!" class="navLink">Contact for Details</p></a>
-      <div class="row">
-        <div class="col-md-8" id="leftBeatsSection">
-          <p></p>
-          <div id="musicPlaylist" style="margin:0px;padding:0px;overflow:hidden">
-
-            <iframe src="https://bandcamp.com/EmbeddedPlayer/album=3501350017/size=large/bgcol=333333/linkcol=4ec5ec/artwork=none/transparent=true/" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" seamless><a
-                href="https://d3inthebuilding.bandcamp.com/album/the-purge">THE PURGE by Tha 5th Element</a></iframe>
-          </div>
-
-          <!-- ================= ORIGINAL CODE FROM BANDCAMP =============
-                            <iframe style="border: 0; width: 400px; height: 439px;" src="https://bandcamp.com/EmbeddedPlayer/album=1735612180/size=large/bgcol=333333/linkcol=4ec5ec/artwork=none/transparent=true/" seamless><a href="http://d3inthebuilding.bandcamp.com/album/late-night-snacks">Late Night Snacks by Tha 5th Element</a></iframe>
-                            </div> -->
+    <!-- Footer -->
+    <footer class="bg-black border-t border-[#673AB7]/20">
+        <div class="container mx-auto px-6 py-8">
+             <div class="text-center mb-6">
+                <a href="https://link.space/@Tha5thElement" target="_blank" class="bg-[#673AB7] hover:bg-[#EA80FC] text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">
+                    View All My Links
+                </a>
+             </div>
+            <div class="flex justify-center items-center space-x-6 mb-6">
+                <!-- Social icons with enhanced hover effects -->
+                <a href="https://twitter.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-[#03A9FF] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@Tha5thElement" target="_blank" class="text-stone-400 hover:text-red-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover:text-[#EA80FC] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover:text-[#673AB7] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://tiktok.com/@tha5thelement" target="_blank" class="text-stone-400 hover:text-white transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://facebook.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+             <p class="text-center text-stone-500">&copy; 2024 Tha5thElement. All Rights Reserved.</p>
         </div>
-        <div class="col-md-4 " id="rightBeatsSection">
-          <img src="https://f4.bcbits.com/img/a2480886297_10.jpg" alt="The Purge Album Art" />
-        </div>
-      </div>
-    </div>
-    <section>
-      <div id="bioSection">
-        <h2 id="title">Biography</h2>
-        <p id="biography" class="regText"> From rapper to producer, producer to audio engineer, Tha 5th Element truly is a One Man Band. Over 15 years in the making, Tha 5th Element has won the 2017 Las Vegas Hip-Hop Beat Battle Tournament, placed
-          3rd at the 2017 Las Vegas EDM Beat Battle Tournmant, and performed his songs all over the world in addition to having his music featured in the Mixed Martial Arts Podcast, The Co-Main Event Podcast. He currently resides in his hometown of Las Vegas, NV making music and performing with Cypher Club Las Vegas.</p>
-      </div>
-    </section>
+    </footer>
+    
+    <!-- Google Translate API Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                includedLanguages: 'en,es,fr,de,ja,ko,pt,ru,zh-CN'
+            }, 'google_translate_element');
+            const originalWidget = document.getElementById('google_translate_element');
+            document.getElementById('translate_button_container').appendChild(originalWidget);
+            originalWidget.style.display = 'inline-block';
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-  </div>
+    <!-- Site Logic JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Album Data ---
+            const albums = [
+                 { title: '52 Weeks: Quarter 4', imgId: '1720138249', link: 'https://album.link/52wq4' },
+                 { title: 'WERK 2', imgId: '1714088998', link: 'https://song.link/WERK2' },
+                 { title: 'Late For Summer EP', imgId: '1648083827', link: 'https://album.link/dswkzszzxng7q' },
+                 { title: 'Nonsense', imgId: '1615707775', link: 'https://song.link/Nonsense' },
+                 { title: 'Five Fire Flow LP - Side A', imgId: '1576483563', link: 'https://song.link/fffA' },
+                 { title: 'Five Fire Flow LP - Side B', imgId: '1576483577', link: 'https://song.link/fffB' },
+                 { title: '52 Weeks: Quarter 3', imgId: '1699566236', link: 'https://album.link/53wQ3' },
+                 { title: '52 Weeks: Quarter 2', imgId: '1690941940', link: 'https://album.link/52WQ2' },
+                 { title: '52 Weeks: Quarter 1', imgId: '1678852331', link: 'https://song.link/52wq1' },
+                 { title: 'Beats For Streamers Vol 3', imgId: '1660683038', link: 'https://song.link/b4s3' },
+                 { title: 'Beats For Streamers Vol 2', imgId: '1622956247', link: 'https://album.link/beatsforstreamersvol2' },
+                 { title: 'Beats For Streamers Vol 1', imgId: '1538392170', link: 'https://album.link/9hpdtbqmjg70x' },
+                 { title: 'Late Night Snacks', imgId: '1504936906', link: 'https://song.link/latenightsnacks' },
+                 { title: 'The Collection Volume One', imgId: '938467895', link: 'https://song.link/TheCollectionVol1' },
+            ];
 
+            // --- Populate Album Carousel ---
+            const carouselContainer = document.getElementById('album-carousel-container');
+            albums.forEach(album => {
+                const albumCard = `
+                    <div class="album-card glass-card rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
+                        <a href="${album.link}" target="_blank">
+                            <img src="https://album.link/i/${album.imgId}" alt="${album.title}" class="w-full rounded-md mb-4 aspect-square object-cover">
+                            <p class="font-bold text-white">${album.title}</p>
+                        </a>
+                    </div>
+                `;
+                carouselContainer.innerHTML += albumCard;
+            });
+            
+            // --- Schedule & Countdown Logic ---
+            const scheduleContainer = document.getElementById('schedule-container');
+            const countdownElement = document.getElementById('countdown');
+            const schedulePST = [
+                { day: 'Morning', hour: 9, duration: 6 }, // Avg duration in hours
+                { day: 'Evening', hour: 21, duration: 6 }, // Avg duration in hours
+            ];
+            
+            function updateScheduleAndTime() {
+                const now = new Date();
+                const timeZone = 'America/Los_Angeles'; // PST/PDT timezone
 
+                let nextStreamDate = null;
 
-  <!-- Artist Websites -->
+                for (let i = 0; i < 7; i++) { 
+                    const checkDate = new Date(now);
+                    checkDate.setDate(now.getDate() + i);
+                    
+                    const dayOfWeek = checkDate.getDay();
+                    if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                        for (const slot of schedulePST) {
+                            let streamTimeCandidate = new Date(new Date().toLocaleString('en-US', { timeZone }));
+                            streamTimeCandidate.setDate(checkDate.getDate());
+                            streamTimeCandidate.setMonth(checkDate.getMonth());
+                            streamTimeCandidate.setFullYear(checkDate.getFullYear());
+                            streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
 
-  <div id="websites">
-    <h1 id="title">Artist Webpages</h1><br>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4" id="leftBeatsSection">
-          <p></p>
-          <img src="https://media.giphy.com/media/KIS4alAucQILe/giphy-downsized.gif" alt="website placeholder" />
-        </div>
-        <div class="col-md-8 " id="rightBeatsSection">
-          <p id="websiteText" class="regText">Having a website you can direct your fans to is almost as important as having quality music. Get yours today and take your brand to the next level. Websites can be ready for you within 24 hours* so your
-            fans can reach you NOW.</p>
-          <p class="regText">With prices as low as $50 USD, we're here to make getting your brand the professional look you need without breaking your budget so you can focus on the things that matter most to you.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+                            if (streamTimeCandidate > now) {
+                                nextStreamDate = streamTimeCandidate;
+                                i = 7; 
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (nextStreamDate) {
+                    const distance = nextStreamDate - now;
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  <!-- Navigation Bar -->
+                    countdownElement.innerHTML = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                } else {
+                    countdownElement.innerHTML = "Next stream TBD!";
+                }
 
-  <ul id="navigationBar">
+                if (scheduleContainer.children.length < 2) {
+                    scheduleContainer.innerHTML = '';
+                    schedulePST.forEach(slot => {
+                        const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                        todayInPST_Start.setHours(slot.hour, 0, 0, 0);
+                        
+                        const localStartTimeString = todayInPST_Start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
 
-    <li><a href="#topSection" class="navLink">Home</a></li>
+                        const todayInPST_End = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                        todayInPST_End.setHours(slot.hour + slot.duration, 0, 0, 0);
+                        const localEndTimeString = todayInPST_End.toLocaleTimeString([], { hour: 'numeric' });
 
-    <li><a href="#newReleases" class="navLink">Raps</a></li>
+                        const scheduleCard = `
+                            <div class="glass-card rounded-lg p-6 text-center">
+                                <p class="text-lg text-[#FFEB3B] font-semibold">${slot.day} Stream</p>
+                                <p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p>
+                                <p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p>
+                                <p class="text-xs text-stone-500 mt-2">Mon - Fri</p>
+                            </div>
+                        `;
+                        scheduleContainer.innerHTML += scheduleCard;
+                    });
+                }
+            }
 
-    <li><a href="#beats" class="navLink">Beats</a></li>
+            updateScheduleAndTime();
+            setInterval(updateScheduleAndTime, 1000);
 
-    <li><a href="#bioSection" class="navLink">Bio</a></li>
+            // --- NEW: Animation on Scroll/Load Logic ---
+            // Animate hero elements on page load
+            const onLoadElements = document.querySelectorAll('.animate-on-load');
+            onLoadElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('fade-in-up');
+                    el.classList.remove('hidden-for-animation');
+                }, index * 50 + (parseInt(el.style.animationDelay) || 0));
+            });
 
-    <!-- <li><a href="#lucipurr" class="navLink">LuciPurr VST</a></li> -->
+            // Animate other sections on scroll
+            const onScrollElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        entry.target.classList.remove('hidden-for-animation');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-
-
-    <!-- <li><a href="#websites" class="navLink">Resources</a></li> -->
-
-    <!-- <li><a href="#fanClub" class="navLink">Fan Club</a></li> -->
-
-    <li><a href="mailto:ItsTha5th@Gmail.com​?Subject=5th!" class="navLink">Contact</a></li>
-
-    <li>
-      <!-- <a href="#websites" class="navLink">Artist Websites</a> -->
-      <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:00EdDMvqqNPFar8mYg8AlD&size=detail&theme=dark&show-count=0" width="300" height="60" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
-    </li>
-
-
-
-    <!--        <li><a href="#contact" class="navLink">Contact</a></li>           -->
-    <li style="float:right"><a href="#topSection" class="navLink">Back to Top</a></li>
-  </ul>
-
+            onScrollElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
-
 </html>
