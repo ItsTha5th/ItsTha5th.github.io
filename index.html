@@ -73,7 +73,7 @@
 
         /* Smooth transitions for theme changes */
         .theme-transition {
-            transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease;
+            transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, box-shadow 0.8s ease;
         }
 
         /* Custom styles to complement Tailwind */
@@ -120,18 +120,18 @@
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl md:text-3xl font-bold text-white tracking-tighter flex items-center gap-3">
                 <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Tha5thElement Logo" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
-                Tha<span class="theme-transition" style="color: var(--theme-accent);">5th</span>Element
+                Tha<span style="color: var(--theme-accent);" class="theme-transition">5th</span>Element
             </a>
             <!-- Desktop Menu -->
             <div id="desktop-menu" class="hidden md:flex items-center space-x-6 text-lg">
-                <a href="#stream" class="hover-theme-accent transition-colors">Stream</a>
-                <a href="#music" class="hover-theme-accent transition-colors">Music</a>
-                <a href="#schedule" class="hover-theme-accent transition-colors">Schedule</a>
-                <a href="#about" class="hover-theme-accent transition-colors">About</a>
-                <a href="#support" class="hover-theme-accent transition-colors">Support</a>
+                <a href="#stream" class="transition-colors" style="--hover-color: var(--theme-accent);" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''">Stream</a>
+                <a href="#music" class="transition-colors" style="--hover-color: var(--theme-accent);" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''">Music</a>
+                <a href="#schedule" class="transition-colors" style="--hover-color: var(--theme-accent);" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''">Schedule</a>
+                <a href="#about" class="transition-colors" style="--hover-color: var(--theme-accent);" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''">About</a>
+                <a href="#support" class="transition-colors" style="--hover-color: var(--theme-accent);" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''">Support</a>
             </div>
             <div class="flex items-center gap-4">
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="hidden md:block bg-theme-primary hover-theme-accent-bg text-white font-bold py-2 px-4 rounded-lg transition-transform hover:scale-105">
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="hidden md:block text-white font-bold py-2 px-4 rounded-lg theme-transition transition-transform hover:scale-105" style="background-color: var(--theme-primary);"  onmouseover="this.style.backgroundColor = 'var(--theme-accent)'" onmouseout="this.style.backgroundColor = 'var(--theme-primary)'">
                     Follow
                 </a>
                 <div id="translate_button_container" class="theme-transition">
@@ -145,12 +145,12 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/90 absolute w-full">
-            <a href="#stream" class="block text-center py-4 text-lg hover-theme-primary-bg">Stream</a>
-            <a href="#music" class="block text-center py-4 text-lg hover-theme-primary-bg">Music</a>
-            <a href="#schedule" class="block text-center py-4 text-lg hover-theme-primary-bg">Schedule</a>
-            <a href="#about" class="block text-center py-4 text-lg hover-theme-primary-bg">About</a>
-            <a href="#support" class="block text-center py-4 text-lg hover-theme-primary-bg">Support</a>
-            <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="block text-center py-4 text-lg hover-theme-primary-bg">Follow on Twitch</a>
+             <a href="#stream" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">Stream</a>
+            <a href="#music" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">Music</a>
+            <a href="#schedule" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">Schedule</a>
+            <a href="#about" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">About</a>
+            <a href="#support" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">Support</a>
+            <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="block text-center py-4 text-lg theme-transition" onmouseover="this.style.backgroundColor = 'var(--theme-primary)'" onmouseout="this.style.backgroundColor = ''">Follow on Twitch</a>
         </div>
     </header>
 
@@ -161,11 +161,11 @@
             <div class="hero-content container mx-auto px-6">
                  <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
                 <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
-                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-theme-primary theme-transition shadow-2xl shadow-theme-primary/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
-                    <iframe src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 theme-transition shadow-2xl hidden-for-animation animate-on-load" style="border-color: var(--theme-primary); box-shadow: 0 4px 14px 0 var(--theme-primary); animation-delay: 400ms;">
+                    <iframe src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
                 </div>
                 <div class="mt-12 bg-black/50 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
-                    <h2 class="text-2xl font-bold text-theme-accent theme-transition mb-2">Next Stream Starts In:</h2>
+                    <h2 class="text-2xl font-bold theme-transition mb-2" style="color: var(--theme-accent);">Next Stream Starts In:</h2>
                     <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider">--:--:--:--</div>
                 </div>
             </div>
@@ -178,8 +178,8 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-white">The Main Event</h2>
                     <p class="text-stone-400 mt-2">Catch me live, or watch the latest VOD. The Cool Kids Club is always open!</p>
                 </div>
-                <div class="responsive-iframe rounded-xl overflow-hidden border-2 border-theme-primary theme-transition shadow-2xl shadow-theme-primary/20">
-                    <iframe src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
+                <div class="responsive-iframe rounded-xl overflow-hidden border-2 theme-transition shadow-2xl" style="border-color: var(--theme-primary); box-shadow: 0 4px 14px 0 var(--theme-primary);">
+                    <iframe src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
                 </div>
             </div>
         </section>
@@ -205,7 +205,7 @@
                     <p class="text-stone-400 mt-2">Latest album below. Scroll to change the vibe!</p>
                 </div>
                  <div class="max-w-4xl mx-auto mb-12">
-                     <iframe id="spotify-player" style="border-radius:12px" src="https://open.spotify.com/embed/album/7fWOh38ZpIyGULlegbxULj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                     <iframe id="spotify-player" style="border-radius:12px" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                  </div>
                 <div class="album-carousel-wrapper max-w-6xl mx-auto">
                     <button id="carousel-arrow-left" class="carousel-arrow left hidden"><i class="fas fa-chevron-left"></i></button>
@@ -223,7 +223,7 @@
                     <p class="text-stone-400 mt-2">Every little bit helps me continue doing what I love. Thank you!</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover-theme-accent-bg/20 hover:-translate-y-2 hover:shadow-xl hover-shadow-theme-accent/20"><i class="fas fa-tshirt text-4xl text-theme-accent theme-transition mb-3"></i><p class="text-xl font-bold text-white">Merch Store</p></a>
+                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-theme-accent/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-theme-accent/20"><i class="fas fa-tshirt text-4xl text-theme-accent theme-transition mb-3"></i><p class="text-xl font-bold text-white">Merch Store</p></a>
                     <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#03A9FF]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#03A9FF]/20"><i class="fas fa-coffee text-4xl text-[#03A9FF] mb-3"></i><p class="text-xl font-bold text-white">Tip on Ko-fi</p></a>
                     <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#FFEB3B]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#FFEB3B]/20"><i class="fa-brands fa-paypal text-4xl text-[#FFEB3B] mb-3"></i><p class="text-xl font-bold text-white">PayPal</p></a>
                     <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-white/10"><i class="fas fa-gamepad text-4xl text-white mb-3"></i><p class="text-xl font-bold text-white">Game Deals</p></a>
@@ -272,16 +272,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-theme-primary/20 theme-transition">
+    <footer class="bg-black border-t theme-transition" style="border-color: var(--theme-primary);">
         <div class="container mx-auto px-6 py-8">
              <div class="text-center mb-6">
-                <a href="https://link.space/@Tha5thElement" target="_blank" class="bg-theme-primary hover-theme-accent-bg text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">View All My Links</a>
+                <a href="https://link.space/@Tha5thElement" target="_blank" class="text-white font-bold py-3 px-6 rounded-lg theme-transition transition-transform hover:scale-105" style="background-color: var(--theme-primary);" onmouseover="this.style.backgroundColor = 'var(--theme-accent)'" onmouseout="this.style.backgroundColor = 'var(--theme-primary)'">View All My Links</a>
              </div>
             <div class="flex justify-center items-center space-x-6 mb-6">
                 <a href="https://twitter.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-[#03A9FF] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@Tha5thElement" target="_blank" class="text-stone-400 hover:text-red-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover-theme-accent transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover-theme-primary transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 theme-transition transition-transform hover:-translate-y-1 text-3xl" onmouseover="this.style.color = 'var(--theme-accent)'" onmouseout="this.style.color = ''"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 theme-transition transition-transform hover:-translate-y-1 text-3xl" onmouseover="this.style.color = 'var(--theme-primary)'" onmouseout="this.style.color = ''"><i class="fa-brands fa-twitch"></i></a>
                 <a href="https://tiktok.com/@tha5thelement" target="_blank" class="text-stone-400 hover:text-white transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="https://facebook.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-facebook"></i></a>
             </div>
@@ -298,177 +298,178 @@
     <!-- Site Logic JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- Hamburger Menu Logic ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-            mobileMenu.addEventListener('click', (e) => { if(e.target.tagName === 'A') { mobileMenu.classList.add('hidden'); } });
+            try {
+                // --- Hamburger Menu Logic ---
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenuButton && mobileMenu) {
+                    mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+                    mobileMenu.addEventListener('click', (e) => { if (e.target.tagName === 'A') { mobileMenu.classList.add('hidden'); } });
+                }
 
-            // --- Set Copyright Year ---
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+                // --- Set Copyright Year ---
+                const copyrightYear = document.getElementById('copyright-year');
+                if (copyrightYear) {
+                    copyrightYear.textContent = new Date().getFullYear();
+                }
 
-            // --- Album Data with Themes ---
-            const albums = [
-                 { id: '7fWOh38ZpIyGULlegbxULj', title: '52 Weeks: Quarter 4', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273e0444e995e927708a3f516a2', link: 'https://album.link/52wq4', theme: { primary: '#5C4B99', accent: '#F4ABC4' } },
-                 { id: '06v2v5B3hhe5blI6A6y4yv', title: 'WERK 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a5a75344d2822d103554a9d7', link: 'https://song.link/WERK2', theme: { primary: '#FBCB0A', accent: '#FFFFFF' } },
-                 { id: '1u8DBEhmjC2c5iC3G41JAd', title: 'Late For Summer EP', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376c6c4f34a8e2723a1a51270', link: 'https://album.link/dswkzszzxng7q', theme: { primary: '#F9A826', accent: '#FDFD96' } },
-                 { id: '6S4FhVzW2SgL3B1cENTHwS', title: 'Nonsense', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273392476839352e825220c4558', link: 'https://song.link/Nonsense', theme: { primary: '#005A9C', accent: '#ABD1DC' } },
-                 { id: '4rUy5S9w1mX1Tz7fT3n4yG', title: 'Five Fire Flow LP - Side A', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a8769399427f71696e578c2e', link: 'https://song.link/fffA', theme: { primary: '#D83121', accent: '#F9A826' } },
-                 { id: '6S2Z1JjY8a5H4z3x2m3o4n', title: 'Five Fire Flow LP - Side B', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2737000579e532a26c4f2e90f23', link: 'https://song.link/fffB', theme: { primary: '#0077B6', accent: '#90E0EF' } },
-                 { id: '0p7n7JqC9wG3r7hF5w1o9L', title: '52 Weeks: Quarter 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2734a78791001d1576b9140c836', link: 'https://album.link/53wQ3', theme: { primary: '#006400', accent: '#90EE90' } },
-                 { id: '5E2lJz2a3hH4gL3t4o5e6R', title: '52 Weeks: Quarter 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2732953258f3c1a329d7c48f94e', link: 'https://album.link/52WQ2', theme: { primary: '#004E89', accent: '#FF6700' } },
-                 { id: '1b8S4h4a3k2h3l4k5k6k7K', title: '52 Weeks: Quarter 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273d2a09c25f7719602330a6c11', link: 'https://song.link/52wq1', theme: { primary: '#4A4A4A', accent: '#FF86C9' } },
-                 { id: '7o2e4n5m6s7d8f9g0h1i2j', title: 'Beats For Streamers Vol 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273188820f124b898126e038814', link: 'https://song.link/b4s3', theme: { primary: '#1E3A8A', accent: '#38BDF8' } },
-                 { id: '3l4k5j6h7f8g9h0i1j2k3l', title: 'Beats For Streamers Vol 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273ea61f4b2323e0797157a468d', link: 'https://album.link/beatsforstreamersvol2', theme: { primary: '#7C3AED', accent: '#F472B6' } },
-                 { id: '2m3n4o5p6q7r8s9t0u1v2w', title: 'Beats For Streamers Vol 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a8a3c89c362089b2f293393', link: 'https://album.link/9hpdtbqmjg70x', theme: { primary: '#0D9488', accent: '#FBBF24' } },
-                 { id: '1d2f3g4h5j6k7l8k9k0k1l', title: 'Late Night Snacks', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376a267f8b9b469500c59239d', link: 'https://song.link/latenightsnacks', theme: { primary: '#4C1D95', accent: '#EC4899' } },
-                 { id: '9h0i1j2k3l4m5n6o7p8q9r', title: 'The Collection Volume One', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a110a1122a61356f1406e3e', link: 'https://song.link/TheCollectionVol1', theme: { primary: '#1F2937', accent: '#F59E0B' } },
-            ];
+                // --- Album Data with Themes ---
+                const albums = [
+                    { id: '7fWOh38ZpIyGULlegbxULj', title: '52 Weeks: Quarter 4', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273e0444e995e927708a3f516a2', link: 'https://album.link/52wq4', theme: { primary: '#5C4B99', accent: '#F4ABC4' } },
+                    { id: '06v2v5B3hhe5blI6A6y4yv', title: 'WERK 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a5a75344d2822d103554a9d7', link: 'https://song.link/WERK2', theme: { primary: '#FBCB0A', accent: '#FFFFFF' } },
+                    { id: '1u8DBEhmjC2c5iC3G41JAd', title: 'Late For Summer EP', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376c6c4f34a8e2723a1a51270', link: 'https://album.link/dswkzszzxng7q', theme: { primary: '#F9A826', accent: '#FDFD96' } },
+                    { id: '6S4FhVzW2SgL3B1cENTHwS', title: 'Nonsense', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273392476839352e825220c4558', link: 'https://song.link/Nonsense', theme: { primary: '#005A9C', accent: '#ABD1DC' } },
+                    { id: '4rUy5S9w1mX1Tz7fT3n4yG', title: 'Five Fire Flow LP - Side A', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a8769399427f71696e578c2e', link: 'https://song.link/fffA', theme: { primary: '#D83121', accent: '#F9A826' } },
+                    { id: '6S2Z1JjY8a5H4z3x2m3o4n', title: 'Five Fire Flow LP - Side B', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2737000579e532a26c4f2e90f23', link: 'https://song.link/fffB', theme: { primary: '#0077B6', accent: '#90E0EF' } },
+                    { id: '0p7n7JqC9wG3r7hF5w1o9L', title: '52 Weeks: Quarter 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2734a78791001d1576b9140c836', link: 'https://album.link/53wQ3', theme: { primary: '#006400', accent: '#90EE90' } },
+                    { id: '5E2lJz2a3hH4gL3t4o5e6R', title: '52 Weeks: Quarter 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2732953258f3c1a329d7c48f94e', link: 'https://album.link/52WQ2', theme: { primary: '#004E89', accent: '#FF6700' } },
+                    { id: '1b8S4h4a3k2h3l4k5k6k7K', title: '52 Weeks: Quarter 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273d2a09c25f7719602330a6c11', link: 'https://song.link/52wq1', theme: { primary: '#4A4A4A', accent: '#FF86C9' } },
+                    { id: '2cGHs2s1a9uGqnL22b2rDD', title: 'Beats For Streamers Vol 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273188820f124b898126e038814', link: 'https://song.link/b4s3', theme: { primary: '#1E3A8A', accent: '#38BDF8' } },
+                    { id: '6K0QznY2KVr2l2c82uRj2q', title: 'Beats For Streamers Vol 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273ea61f4b2323e0797157a468d', link: 'https://album.link/beatsforstreamersvol2', theme: { primary: '#7C3AED', accent: '#F472B6' } },
+                    { id: '2B1XVuA9z8Vqg1Zp2w2y9M', title: 'Beats For Streamers Vol 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a8a3c89c362089b2f293393', link: 'https://album.link/9hpdtbqmjg70x', theme: { primary: '#0D9488', accent: '#FBBF24' } },
+                    { id: '6bZ1rS2a3h4i5j6k7l8m9n', title: 'Late Night Snacks', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376a267f8b9b469500c59239d', link: 'https://song.link/latenightsnacks', theme: { primary: '#4C1D95', accent: '#EC4899' } },
+                    { id: '0q1r2s3t4u5v6w7x8y9z0a', title: 'The Collection Volume One', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a110a1122a61356f1406e3e', link: 'https://song.link/TheCollectionVol1', theme: { primary: '#1F2937', accent: '#F59E0B' } },
+                ];
 
-            // --- Populate Album Carousel ---
-            const carouselContainer = document.getElementById('album-carousel-container');
-            albums.forEach((album, index) => {
-                const albumCard = `<div id="album-${index}" class="album-card glass-card rounded-lg p-4 text-center"><a href="${album.link}" target="_blank"><img src="${album.imgUrl}" alt="${album.title}" class="w-full rounded-md mb-4 aspect-square object-cover"><p class="font-bold text-white">${album.title}</p></a></div>`;
-                carouselContainer.innerHTML += albumCard;
-            });
-            
-            // --- Carousel & Theming Logic ---
-            const spotifyPlayer = document.getElementById('spotify-player');
-            const carousel = document.getElementById('album-carousel-container');
-            const leftArrow = document.getElementById('carousel-arrow-left');
-            const rightArrow = document.getElementById('carousel-arrow-right');
-            
-            const updateArrows = () => {
-                const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-                leftArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
-                rightArrow.classList.toggle('hidden', carousel.scrollLeft >= maxScrollLeft -1);
-            };
+                // --- Populate Album Carousel ---
+                const carouselContainer = document.getElementById('album-carousel-container');
+                if(carouselContainer){
+                    albums.forEach((album, index) => {
+                        const albumCard = document.createElement('div');
+                        albumCard.id = `album-${index}`;
+                        albumCard.className = "album-card glass-card rounded-lg p-4 text-center";
+                        albumCard.innerHTML = `<a href="${album.link}" target="_blank"><img src="${album.imgUrl}" alt="${album.title}" class="w-full rounded-md mb-4 aspect-square object-cover" loading="lazy"><p class="font-bold text-white">${album.title}</p></a>`;
+                        carouselContainer.appendChild(albumCard);
+                    });
+                }
+                
+                // --- Carousel & Theming Logic ---
+                const spotifyPlayer = document.getElementById('spotify-player');
+                const carousel = document.getElementById('album-carousel-container');
+                const leftArrow = document.getElementById('carousel-arrow-left');
+                const rightArrow = document.getElementById('carousel-arrow-right');
+                
+                function initializeCarousel() {
+                    const albumCards = document.querySelectorAll('.album-card');
+                    if (!albumCards.length || !spotifyPlayer) return;
 
-            leftArrow.addEventListener('click', () => { carousel.scrollBy({ left: -carousel.clientWidth * 0.8, behavior: 'smooth' }); });
-            rightArrow.addEventListener('click', () => { carousel.scrollBy({ left: carousel.clientWidth * 0.8, behavior: 'smooth' }); });
-            carousel.addEventListener('scroll', updateArrows);
-            window.addEventListener('resize', updateArrows);
-            updateArrows();
+                    const updateArrows = () => {
+                        if (!carousel) return;
+                        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+                        leftArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
+                        rightArrow.classList.toggle('hidden', carousel.scrollLeft >= maxScrollLeft - 1);
+                    };
 
-            const albumCards = document.querySelectorAll('.album-card');
-            const themeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    albumCards.forEach(card => card.classList.remove('is-active'));
-                    if (entry.isIntersecting) {
-                        const activeCard = entry.target;
-                        activeCard.classList.add('is-active');
-                        const albumIndex = parseInt(activeCard.id.split('-')[1]);
-                        const activeAlbum = albums[albumIndex];
-                        
-                        // Update CSS variables for theme
-                        document.documentElement.style.setProperty('--theme-primary', activeAlbum.theme.primary);
-                        document.documentElement.style.setProperty('--theme-accent', activeAlbum.theme.accent);
-                        
-                        // Update Spotify Player
-                        spotifyPlayer.src = `https://open.spotify.com/embed/album/${activeAlbum.id}?utm_source=generator&theme=0`;
+                    leftArrow.addEventListener('click', () => { carousel.scrollBy({ left: -carousel.clientWidth * 0.8, behavior: 'smooth' }); });
+                    rightArrow.addEventListener('click', () => { carousel.scrollBy({ left: carousel.clientWidth * 0.8, behavior: 'smooth' }); });
+                    carousel.addEventListener('scroll', updateArrows);
+                    window.addEventListener('resize', updateArrows);
+
+                    const themeObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                document.querySelectorAll('.album-card').forEach(card => card.classList.remove('is-active'));
+                                const activeCard = entry.target;
+                                activeCard.classList.add('is-active');
+                                const albumIndex = parseInt(activeCard.id.split('-')[1]);
+                                const activeAlbum = albums[albumIndex];
+
+                                if (activeAlbum) {
+                                    document.documentElement.style.setProperty('--theme-primary', activeAlbum.theme.primary);
+                                    document.documentElement.style.setProperty('--theme-accent', activeAlbum.theme.accent);
+                                    spotifyPlayer.src = `https://open.spotify.com/embed/album/${activeAlbum.id}?utm_source=generator&theme=0`;
+                                }
+                            }
+                        });
+                    }, { root: carousel, threshold: 0.6 });
+
+                    albumCards.forEach(card => themeObserver.observe(card));
+                    
+                    // Set initial state
+                    if(albums.length > 0) {
+                        const initialAlbum = albums[0];
+                        document.documentElement.style.setProperty('--theme-primary', initialAlbum.theme.primary);
+                        document.documentElement.style.setProperty('--theme-accent', initialAlbum.theme.accent);
+                        spotifyPlayer.src = `https://open.spotify.com/embed/album/${initialAlbum.id}?utm_source=generator&theme=0`;
+                        albumCards[0].classList.add('is-active');
                     }
-                });
-            }, { root: carousel, threshold: 0.6 });
+                    updateArrows();
+                }
 
-            albumCards.forEach(card => themeObserver.observe(card));
+                initializeCarousel();
 
-            // --- Schedule & Countdown Logic ---
-            const scheduleContainer = document.getElementById('schedule-container');
-            const countdownElement = document.getElementById('countdown');
-            const schedulePST = [ { day: 'Morning', hour: 9, duration: 6 }, { day: 'Evening', hour: 21, duration: 6 } ];
-            
-            function updateScheduleAndTime() {
-                const now = new Date();
-                const timeZone = 'America/Los_Angeles';
-                let nextStreamDate = null;
-                for (let i = 0; i < 7; i++) { 
-                    const checkDate = new Date(now);
-                    checkDate.setDate(now.getDate() + i);
-                    const dayOfWeek = checkDate.getDay();
-                    if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-                        for (const slot of schedulePST) {
-                            let streamTimeCandidate = new Date(new Date().toLocaleString('en-US', { timeZone }));
-                            streamTimeCandidate.setDate(checkDate.getDate());
-                            streamTimeCandidate.setMonth(checkDate.getMonth());
-                            streamTimeCandidate.setFullYear(checkDate.getFullYear());
-                            streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
-                            if (streamTimeCandidate > now) {
-                                nextStreamDate = streamTimeCandidate;
-                                i = 7; 
-                                break;
+                // --- Schedule & Countdown Logic ---
+                const scheduleContainer = document.getElementById('schedule-container');
+                const countdownElement = document.getElementById('countdown');
+                const schedulePST = [{ day: 'Morning', hour: 9, duration: 6 }, { day: 'Evening', hour: 21, duration: 6 }];
+                
+                function updateScheduleAndTime() {
+                    const now = new Date();
+                    const timeZone = 'America/Los_Angeles';
+                    let nextStreamDate = null;
+                    for (let i = 0; i < 7; i++) {
+                        const checkDate = new Date(now);
+                        checkDate.setDate(now.getDate() + i);
+                        const dayOfWeek = checkDate.getDay();
+                        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                            for (const slot of schedulePST) {
+                                let streamTimeCandidate = new Date(new Date().toLocaleString('en-US', { timeZone }));
+                                streamTimeCandidate.setDate(checkDate.getDate());
+                                streamTimeCandidate.setMonth(checkDate.getMonth());
+                                streamTimeCandidate.setFullYear(checkDate.getFullYear());
+                                streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
+                                if (streamTimeCandidate > now) {
+                                    nextStreamDate = streamTimeCandidate;
+                                    i = 7; break;
+                                }
                             }
                         }
                     }
+                    if (countdownElement) {
+                        if (nextStreamDate) {
+                            const distance = nextStreamDate - now;
+                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                            countdownElement.innerHTML = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                        } else {
+                            countdownElement.innerHTML = "Next stream TBD!";
+                        }
+                    }
+                    if (scheduleContainer && (scheduleContainer.children.length < 2 || scheduleContainer.querySelector('.animate-pulse'))) {
+                        scheduleContainer.innerHTML = '';
+                        schedulePST.forEach(slot => {
+                            const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone }));
+                            todayInPST_Start.setHours(slot.hour, 0, 0, 0);
+                            const localStartTimeString = todayInPST_Start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+                            const todayInPST_End = new Date(new Date().toLocaleString('en-US', { timeZone }));
+                            todayInPST_End.setHours(slot.hour + slot.duration, 0, 0, 0);
+                            const localEndTimeString = todayInPST_End.toLocaleTimeString([], { hour: 'numeric' });
+                            scheduleContainer.innerHTML += `<div class="glass-card rounded-lg p-6 text-center"><p class="text-lg text-yellow-300 font-semibold">${slot.day} Stream</p><p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p><p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p><p class="text-xs text-stone-500 mt-2">Mon - Fri</p></div>`;
+                        });
+                    }
                 }
-                if (nextStreamDate) {
-                    const distance = nextStreamDate - now;
-                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    countdownElement.innerHTML = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                } else {
-                    countdownElement.innerHTML = "Next stream TBD!";
-                }
-                if (scheduleContainer.children.length < 2 || scheduleContainer.querySelector('.animate-pulse')) {
-                    scheduleContainer.innerHTML = '';
-                    schedulePST.forEach(slot => {
-                        const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone }));
-                        todayInPST_Start.setHours(slot.hour, 0, 0, 0);
-                        const localStartTimeString = todayInPST_Start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-                        const todayInPST_End = new Date(new Date().toLocaleString('en-US', { timeZone }));
-                        todayInPST_End.setHours(slot.hour + slot.duration, 0, 0, 0);
-                        const localEndTimeString = todayInPST_End.toLocaleTimeString([], { hour: 'numeric' });
-                        const scheduleCard = `<div class="glass-card rounded-lg p-6 text-center"><p class="text-lg text-yellow-300 font-semibold">${slot.day} Stream</p><p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p><p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p><p class="text-xs text-stone-500 mt-2">Mon - Fri</p></div>`;
-                        scheduleContainer.innerHTML += scheduleCard;
+                setInterval(updateScheduleAndTime, 1000);
+                updateScheduleAndTime();
+
+                // --- Animation on Scroll/Load Logic ---
+                const onLoadElements = document.querySelectorAll('.animate-on-load');
+                onLoadElements.forEach((el, index) => { setTimeout(() => { el.classList.add('fade-in-up'); el.classList.remove('hidden-for-animation'); }, index * 50 + (parseInt(el.style.animationDelay) || 0)); });
+                const onScrollElements = document.querySelectorAll('.animate-on-scroll');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-up');
+                            entry.target.classList.remove('hidden-for-animation');
+                            observer.unobserve(entry.target);
+                        }
                     });
-                }
-            }
-            updateScheduleAndTime();
-            setInterval(updateScheduleAndTime, 1000);
+                }, { threshold: 0.1 });
+                onScrollElements.forEach(el => { observer.observe(el); });
 
-            // --- Animation on Scroll/Load Logic ---
-            const onLoadElements = document.querySelectorAll('.animate-on-load');
-            onLoadElements.forEach((el, index) => { setTimeout(() => { el.classList.add('fade-in-up'); el.classList.remove('hidden-for-animation'); }, index * 50 + (parseInt(el.style.animationDelay) || 0)); });
-            const onScrollElements = document.querySelectorAll('.animate-on-scroll');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                        entry.target.classList.remove('hidden-for-animation');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            onScrollElements.forEach(el => { observer.observe(el); });
-
-            // --- Theming Utility Classes ---
-            const themingClasses = {
-                'hover-theme-accent': { property: 'color', variable: 'var(--theme-accent)' },
-                'hover-theme-primary-bg': { property: 'backgroundColor', variable: 'var(--theme-primary)' },
-                'bg-theme-primary': { property: 'backgroundColor', variable: 'var(--theme-primary)' },
-                'hover-theme-accent-bg': { property: 'backgroundColor', variable: 'var(--theme-accent)'},
-                'text-theme-accent': { property: 'color', variable: 'var(--theme-accent)' },
-                'border-theme-primary': { property: 'borderColor', variable: 'var(--theme-primary)' },
-                'shadow-theme-primary/20': { property: 'boxShadow', variable: `0 10px 15px -3px var(--theme-primary)`},
-                'hover-theme-accent-bg/20': { property: 'backgroundColor', variable: 'var(--theme-accent)'},
-                'hover-shadow-theme-accent/20': { property: 'boxShadow', variable: `0 10px 15px -3px var(--theme-accent)`},
-                'border-theme-primary/20': { property: 'borderColor', variable: 'var(--theme-primary)'},
-                'hover-theme-primary': { property: 'color', variable: 'var(--theme-primary)'},
-            };
-
-            for (const className in themingClasses) {
-                const elements = document.querySelectorAll(`.${className}`);
-                elements.forEach(el => {
-                    const { property, variable } = themingClasses[className];
-                    if (className.startsWith('hover')) {
-                        el.addEventListener('mouseenter', () => el.style[property] = variable);
-                        el.addEventListener('mouseleave', () => el.style[property] = '');
-                    } else {
-                        el.style[property] = variable;
-                    }
-                });
+            } catch (e) {
+                console.error("Error initializing site script:", e);
             }
         });
     </script>
