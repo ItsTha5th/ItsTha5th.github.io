@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tha5thElement | Streamer & Musician</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The official website for Tha5thElement, a Twitch streamer, musician, and content creator. Find live stream schedules, latest music, and join the Cool Kids Club.">
+    <meta name="keywords" content="Tha5thElement, Tha 5th Element, ItsTha5th, Twitch Streamer, Musician, Producer, Gaming, Hip Hop, Beats for Streamers, Live Stream, Content Creator, The 5th Element">
+    <link rel="canonical" href="https://itstha5th.github.io/">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itstha5th.github.io/">
+    <meta property="og:title" content="Tha5thElement | Streamer & Musician">
+    <meta property="og:description" content="The official website for Tha5thElement, a Twitch streamer, musician, and content creator.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://itstha5th.github.io/">
+    <meta property="twitter:title" content="Tha5thElement | Streamer & Musician">
+    <meta property="twitter:description" content="The official website for Tha5thElement, a Twitch streamer, musician, and content creator.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -16,143 +35,138 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Tha 5th Element",
+      "alternateName": ["Tha5thElement", "ItsTha5th"],
+      "url": "https://itstha5th.github.io/",
+      "image": "https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png",
+      "description": "Musician, producer, and Twitch streamer creating hip hop music and building a positive gaming community.",
+      "sameAs": [
+        "https://www.twitch.tv/Tha5thElement",
+        "https://twitter.com/Tha5thElement",
+        "https://www.youtube.com/@Tha5thElement",
+        "https://www.instagram.com/tha5thelement",
+        "https://tiktok.com/@tha5thelement",
+        "https://facebook.com/Tha5thElement",
+        "https://open.spotify.com/artist/74BvvrdCdSv2q9tgC6rRB8",
+        "https://music.apple.com/us/artist/tha-5th-element/938467896",
+        "https://music.amazon.com/artists/B00PDG5VJ6/tha-5th-element",
+        "https://www.deezer.com/en/artist/7036321",
+        "https://tidal.com/browse/artist/6244563",
+        "https://music.youtube.com/channel/UCLKIyTcFcLqRzEvHUpksXWA",
+        "https://ko-fi.com/tha5thelement",
+        "https://link.space/@Tha5thElement"
+      ]
+    }
+    </script>
+
     <style>
+        /* CSS Variables for Dynamic Theming */
+        :root {
+            --theme-primary: #673AB7; /* Default: Waluigi Purple */
+            --theme-accent: #EA80FC;  /* Default: Waluigi Pink */
+        }
+
+        /* Smooth transitions for theme changes */
+        .theme-transition {
+            transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease;
+        }
+
         /* Custom styles to complement Tailwind */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-        }
-
-        /* Waluigi-inspired color theme! */
-        .hero-gradient {
-            background: radial-gradient(ellipse at top, #673AB7 0%, #000000 70%);
-        }
-
-        .glass-card {
-            background: rgba(23, 23, 23, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .responsive-iframe {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        }
-
-        .responsive-iframe iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #000000; }
+        .hero-gradient { background: radial-gradient(ellipse at top, var(--theme-primary) 0%, #000000 70%); }
+        .glass-card { background: rgba(23, 23, 23, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .hero-content { position: relative; z-index: 1; }
+        .responsive-iframe { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; }
+        .responsive-iframe iframe { position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; }
         
         /* Album Carousel styles */
-        .album-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .album-carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .album-card {
-            flex: 0 0 80%;
-            scroll-snap-align: center;
-            margin-right: 1rem;
-        }
+        .album-carousel-wrapper { position: relative; }
+        .album-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; scroll-behavior: smooth; }
+        .album-carousel::-webkit-scrollbar { display: none; }
+        .album-card { flex: 0 0 80%; scroll-snap-align: center; margin-right: 1rem; opacity: 0.5; transform: scale(0.9); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .album-card.is-active { opacity: 1; transform: scale(1); }
         @media (min-width: 768px) { .album-card { flex: 0 0 45%; } }
         @media (min-width: 1024px) { .album-card { flex: 0 0 30%; } }
+        
+        .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background-color: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.3s, opacity 0.3s; }
+        .carousel-arrow:hover { background-color: var(--theme-primary); }
+        .carousel-arrow.left { left: -20px; }
+        .carousel-arrow.right { right: -20px; }
+        .carousel-arrow.hidden { opacity: 0; pointer-events: none; }
 
         /* Google Translate Widget Styling */
+        #translate_button_container { position: relative; display: flex; align-items: center; }
+        #google_translate_element { position: relative; top: auto; right: auto; }
         .skiptranslate iframe { display: none !important; }
         body { top: 0px !important; }
-        #google_translate_element { background: #673AB7; padding: 8px; border-radius: 8px; }
-        #google_translate_element select { background-color: #673AB7; color: #F3E5F5; border: none; border-radius: 4px; padding: 4px; }
+        #google_translate_element select { background-color: var(--theme-primary); color: #F3E5F5; border: 1px solid var(--theme-accent); border-radius: 8px; padding: 8px 12px; font-weight: bold; cursor: pointer; }
+        #google_translate_element select:hover { background-color: var(--theme-accent); }
 
-        /* --- NEW: Animation Styles --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Utility class to apply animation */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        /* Class to hide elements before they are animated */
-        .hidden-for-animation {
-            opacity: 0;
-        }
+        /* Animation Styles */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .hidden-for-animation { opacity: 0; }
     </style>
 </head>
-<body class="text-[#F3E5F5] antialiased">
-
-    <!-- Google Translate Element (hidden until initialized) -->
-    <div id="google_translate_element" style="display: none;" class="fixed top-4 right-24 z-50"></div>
+<body class="text-[#F3E5F5] antialiased theme-transition">
 
     <!-- Header / Navigation -->
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-white tracking-tighter flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Logo" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
-                Tha<span class="text-[#EA80FC]">5th</span>Element
+            <a href="#" class="text-2xl md:text-3xl font-bold text-white tracking-tighter flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Tha5thElement Logo" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
+                Tha<span class="theme-transition" style="color: var(--theme-accent);">5th</span>Element
             </a>
-            <div class="hidden md:flex items-center space-x-6 text-lg">
-                <a href="#stream" class="hover:text-[#EA80FC] transition-colors">Stream</a>
-                <a href="#music" class="hover:text-[#EA80FC] transition-colors">Music</a>
-                <a href="#schedule" class="hover:text-[#EA80FC] transition-colors">Schedule</a>
-                <a href="#about" class="hover:text-[#EA80FC] transition-colors">About</a>
-                <a href="#support" class="hover:text-[#EA80FC] transition-colors">Support</a>
+            <!-- Desktop Menu -->
+            <div id="desktop-menu" class="hidden md:flex items-center space-x-6 text-lg">
+                <a href="#stream" class="hover-theme-accent transition-colors">Stream</a>
+                <a href="#music" class="hover-theme-accent transition-colors">Music</a>
+                <a href="#schedule" class="hover-theme-accent transition-colors">Schedule</a>
+                <a href="#about" class="hover-theme-accent transition-colors">About</a>
+                <a href="#support" class="hover-theme-accent transition-colors">Support</a>
             </div>
-             <div class="flex items-center gap-4">
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="hidden md:block bg-[#673AB7] hover:bg-[#EA80FC] text-white font-bold py-2 px-4 rounded-lg transition-transform hover:scale-105">
+            <div class="flex items-center gap-4">
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="hidden md:block bg-theme-primary hover-theme-accent-bg text-white font-bold py-2 px-4 rounded-lg transition-transform hover:scale-105">
                     Follow
                 </a>
-                <div id="translate_button_container"></div> <!-- Placeholder for translate button -->
+                <div id="translate_button_container" class="theme-transition">
+                    <div id="google_translate_element"></div>
+                </div>
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/90 absolute w-full">
+            <a href="#stream" class="block text-center py-4 text-lg hover-theme-primary-bg">Stream</a>
+            <a href="#music" class="block text-center py-4 text-lg hover-theme-primary-bg">Music</a>
+            <a href="#schedule" class="block text-center py-4 text-lg hover-theme-primary-bg">Schedule</a>
+            <a href="#about" class="block text-center py-4 text-lg hover-theme-primary-bg">About</a>
+            <a href="#support" class="block text-center py-4 text-lg hover-theme-primary-bg">Support</a>
+            <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="block text-center py-4 text-lg hover-theme-primary-bg">Follow on Twitch</a>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient py-20 text-center">
+        <section class="hero-gradient theme-transition py-20 text-center">
             <div class="hero-content container mx-auto px-6">
-                 <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">
-                    Streamer, Gamer, Creative
-                </h1>
-                <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">
-                    From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!
-                </p>
-                <!-- Twitch Trailer Embed -->
-                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-[#673AB7]/50 shadow-2xl shadow-[#673AB7]/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
-                    <iframe 
-                        src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&autoplay=true&muted=true"
-                        frameborder="0"
-                        scrolling="no"
-                        allowfullscreen="true">
-                    </iframe>
+                 <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
+                <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
+                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-theme-primary theme-transition shadow-2xl shadow-theme-primary/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
+                    <iframe src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
                 </div>
-                <!-- Countdown Timer -->
                 <div class="mt-12 bg-black/50 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
-                    <h2 class="text-2xl font-bold text-[#EA80FC] mb-2">Next Stream Starts In:</h2>
-                    <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider">
-                        --:--:--:--
-                    </div>
+                    <h2 class="text-2xl font-bold text-theme-accent theme-transition mb-2">Next Stream Starts In:</h2>
+                    <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider">--:--:--:--</div>
                 </div>
             </div>
         </section>
@@ -164,15 +178,8 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-white">The Main Event</h2>
                     <p class="text-stone-400 mt-2">Catch me live, or watch the latest VOD. The Cool Kids Club is always open!</p>
                 </div>
-                <div class="responsive-iframe rounded-xl overflow-hidden border-2 border-[#673AB7]/50 shadow-2xl shadow-[#673AB7]/20">
-                    <iframe 
-                        src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io"
-                        frameborder="0"
-                        scrolling="no"
-                        allowfullscreen="true"
-                        height="100%"
-                        width="100%">
-                    </iframe>
+                <div class="responsive-iframe rounded-xl overflow-hidden border-2 border-theme-primary theme-transition shadow-2xl shadow-theme-primary/20">
+                    <iframe src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
                 </div>
             </div>
         </section>
@@ -185,10 +192,7 @@
                     <p class="text-stone-400 mt-2">Streams are Mon-Fri. Times shown in your local timezone!</p>
                 </div>
                 <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- Schedule will be dynamically inserted here by JavaScript -->
-                    <div class="glass-card rounded-lg p-6 text-center animate-pulse">
-                        <p class="text-2xl font-bold text-white mt-1">Loading schedule...</p>
-                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center animate-pulse"><p class="text-2xl font-bold text-white mt-1">Loading schedule...</p></div>
                 </div>
             </div>
         </section>
@@ -198,17 +202,15 @@
             <div class="container mx-auto px-6">
                  <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">The Soundtrack</h2>
-                    <p class="text-stone-400 mt-2">Latest album below. Scroll right for the full discography.</p>
+                    <p class="text-stone-400 mt-2">Latest album below. Scroll to change the vibe!</p>
                 </div>
-
-                <!-- Spotify Embed -->
                  <div class="max-w-4xl mx-auto mb-12">
-                     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7fWOh38ZpIyGULlegbxULj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                     <iframe id="spotify-player" style="border-radius:12px" src="https://open.spotify.com/embed/album/7fWOh38ZpIyGULlegbxULj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                  </div>
-
-                <!-- Album Carousel -->
-                <div id="album-carousel-container" class="album-carousel">
-                    <!-- Albums will be dynamically inserted here -->
+                <div class="album-carousel-wrapper max-w-6xl mx-auto">
+                    <button id="carousel-arrow-left" class="carousel-arrow left hidden"><i class="fas fa-chevron-left"></i></button>
+                    <div id="album-carousel-container" class="album-carousel pb-4"></div>
+                    <button id="carousel-arrow-right" class="carousel-arrow right"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </section>
@@ -221,23 +223,10 @@
                     <p class="text-stone-400 mt-2">Every little bit helps me continue doing what I love. Thank you!</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                    <!-- Support cards with enhanced hover effects -->
-                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#EA80FC]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#EA80FC]/20">
-                        <i class="fas fa-tshirt text-4xl text-[#EA80FC] mb-3"></i>
-                        <p class="text-xl font-bold text-white">Merch Store</p>
-                    </a>
-                    <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#03A9FF]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#03A9FF]/20">
-                        <i class="fas fa-coffee text-4xl text-[#03A9FF] mb-3"></i>
-                        <p class="text-xl font-bold text-white">Tip on Ko-fi</p>
-                    </a>
-                    <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#FFEB3B]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#FFEB3B]/20">
-                        <i class="fa-brands fa-paypal text-4xl text-[#FFEB3B] mb-3"></i>
-                        <p class="text-xl font-bold text-white">PayPal</p>
-                    </a>
-                    <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-white/10">
-                        <i class="fas fa-gamepad text-4xl text-white mb-3"></i>
-                        <p class="text-xl font-bold text-white">Game Deals</p>
-                    </a>
+                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover-theme-accent-bg/20 hover:-translate-y-2 hover:shadow-xl hover-shadow-theme-accent/20"><i class="fas fa-tshirt text-4xl text-theme-accent theme-transition mb-3"></i><p class="text-xl font-bold text-white">Merch Store</p></a>
+                    <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#03A9FF]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#03A9FF]/20"><i class="fas fa-coffee text-4xl text-[#03A9FF] mb-3"></i><p class="text-xl font-bold text-white">Tip on Ko-fi</p></a>
+                    <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-[#FFEB3B]/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#FFEB3B]/20"><i class="fa-brands fa-paypal text-4xl text-[#FFEB3B] mb-3"></i><p class="text-xl font-bold text-white">PayPal</p></a>
+                    <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:bg-white/20 hover:-translate-y-2 hover:shadow-xl hover:shadow-white/10"><i class="fas fa-gamepad text-4xl text-white mb-3"></i><p class="text-xl font-bold text-white">Game Deals</p></a>
                 </div>
             </div>
         </section>
@@ -246,7 +235,6 @@
         <section id="about" class="py-20 bg-black animate-on-scroll hidden-for-animation">
             <div class="container mx-auto px-6">
                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-                    <!-- About Me -->
                      <div class="lg:col-span-2 glass-card rounded-xl p-8 shadow-lg">
                         <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
                         <div class="space-y-4 text-stone-300">
@@ -256,12 +244,11 @@
                             <p class="font-bold text-white">Got a question or want to join the fun? Jump into chat—let’s make some memories!</p>
                         </div>
                      </div>
-                     <!-- Specs -->
                      <div class="lg:col-span-1 glass-card rounded-xl p-8 shadow-lg">
                          <h3 class="text-2xl font-bold text-white mb-4">My Gear</h3>
                          <div class="space-y-6">
                             <div>
-                                <h4 class="font-bold text-[#EA80FC]">Computer Specs</h4>
+                                <h4 class="font-bold text-theme-accent theme-transition">Computer Specs</h4>
                                 <ul class="list-disc list-inside text-stone-300">
                                     <li>CPU: Intel Core i5 10400</li>
                                     <li>RAM: 16GB DDR4</li>
@@ -269,7 +256,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-[#EA80FC]">Audio Specs</h4>
+                                <h4 class="font-bold text-theme-accent theme-transition">Audio Specs</h4>
                                 <ul class="list-disc list-inside text-stone-300">
                                     <li>Mic: Audio-Technica AT1035</li>
                                     <li>Interface: Focusrite Scarlett 6i6</li>
@@ -285,38 +272,26 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-[#673AB7]/20">
+    <footer class="bg-black border-t border-theme-primary/20 theme-transition">
         <div class="container mx-auto px-6 py-8">
              <div class="text-center mb-6">
-                <a href="https://link.space/@Tha5thElement" target="_blank" class="bg-[#673AB7] hover:bg-[#EA80FC] text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">
-                    View All My Links
-                </a>
+                <a href="https://link.space/@Tha5thElement" target="_blank" class="bg-theme-primary hover-theme-accent-bg text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">View All My Links</a>
              </div>
             <div class="flex justify-center items-center space-x-6 mb-6">
-                <!-- Social icons with enhanced hover effects -->
                 <a href="https://twitter.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-[#03A9FF] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@Tha5thElement" target="_blank" class="text-stone-400 hover:text-red-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover:text-[#EA80FC] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover:text-[#673AB7] transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitch"></i></a>
+                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover-theme-accent transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover-theme-primary transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-twitch"></i></a>
                 <a href="https://tiktok.com/@tha5thelement" target="_blank" class="text-stone-400 hover:text-white transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="https://facebook.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-500 transition-transform hover:-translate-y-1 text-3xl"><i class="fa-brands fa-facebook"></i></a>
             </div>
-             <p class="text-center text-stone-500">&copy; 2024 Tha5thElement. All Rights Reserved.</p>
+             <p class="text-center text-stone-500">&copy; <span id="copyright-year"></span> Tha5thElement. All Rights Reserved.</p>
         </div>
     </footer>
     
     <!-- Google Translate API Script -->
     <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                includedLanguages: 'en,es,fr,de,ja,ko,pt,ru,zh-CN'
-            }, 'google_translate_element');
-            const originalWidget = document.getElementById('google_translate_element');
-            document.getElementById('translate_button_container').appendChild(originalWidget);
-            originalWidget.style.display = 'inline-block';
-        }
+        function googleTranslateElementInit() { new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element'); }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
@@ -324,56 +299,92 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- Album Data ---
+            // --- Hamburger Menu Logic ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            mobileMenu.addEventListener('click', (e) => { if(e.target.tagName === 'A') { mobileMenu.classList.add('hidden'); } });
+
+            // --- Set Copyright Year ---
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+            // --- Album Data with Themes ---
             const albums = [
-                 { title: '52 Weeks: Quarter 4', imgId: '1720138249', link: 'https://album.link/52wq4' },
-                 { title: 'WERK 2', imgId: '1714088998', link: 'https://song.link/WERK2' },
-                 { title: 'Late For Summer EP', imgId: '1648083827', link: 'https://album.link/dswkzszzxng7q' },
-                 { title: 'Nonsense', imgId: '1615707775', link: 'https://song.link/Nonsense' },
-                 { title: 'Five Fire Flow LP - Side A', imgId: '1576483563', link: 'https://song.link/fffA' },
-                 { title: 'Five Fire Flow LP - Side B', imgId: '1576483577', link: 'https://song.link/fffB' },
-                 { title: '52 Weeks: Quarter 3', imgId: '1699566236', link: 'https://album.link/53wQ3' },
-                 { title: '52 Weeks: Quarter 2', imgId: '1690941940', link: 'https://album.link/52WQ2' },
-                 { title: '52 Weeks: Quarter 1', imgId: '1678852331', link: 'https://song.link/52wq1' },
-                 { title: 'Beats For Streamers Vol 3', imgId: '1660683038', link: 'https://song.link/b4s3' },
-                 { title: 'Beats For Streamers Vol 2', imgId: '1622956247', link: 'https://album.link/beatsforstreamersvol2' },
-                 { title: 'Beats For Streamers Vol 1', imgId: '1538392170', link: 'https://album.link/9hpdtbqmjg70x' },
-                 { title: 'Late Night Snacks', imgId: '1504936906', link: 'https://song.link/latenightsnacks' },
-                 { title: 'The Collection Volume One', imgId: '938467895', link: 'https://song.link/TheCollectionVol1' },
+                 { id: '7fWOh38ZpIyGULlegbxULj', title: '52 Weeks: Quarter 4', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273e0444e995e927708a3f516a2', link: 'https://album.link/52wq4', theme: { primary: '#5C4B99', accent: '#F4ABC4' } },
+                 { id: '06v2v5B3hhe5blI6A6y4yv', title: 'WERK 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a5a75344d2822d103554a9d7', link: 'https://song.link/WERK2', theme: { primary: '#FBCB0A', accent: '#FFFFFF' } },
+                 { id: '1u8DBEhmjC2c5iC3G41JAd', title: 'Late For Summer EP', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376c6c4f34a8e2723a1a51270', link: 'https://album.link/dswkzszzxng7q', theme: { primary: '#F9A826', accent: '#FDFD96' } },
+                 { id: '6S4FhVzW2SgL3B1cENTHwS', title: 'Nonsense', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273392476839352e825220c4558', link: 'https://song.link/Nonsense', theme: { primary: '#005A9C', accent: '#ABD1DC' } },
+                 { id: '4rUy5S9w1mX1Tz7fT3n4yG', title: 'Five Fire Flow LP - Side A', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273a8769399427f71696e578c2e', link: 'https://song.link/fffA', theme: { primary: '#D83121', accent: '#F9A826' } },
+                 { id: '6S2Z1JjY8a5H4z3x2m3o4n', title: 'Five Fire Flow LP - Side B', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2737000579e532a26c4f2e90f23', link: 'https://song.link/fffB', theme: { primary: '#0077B6', accent: '#90E0EF' } },
+                 { id: '0p7n7JqC9wG3r7hF5w1o9L', title: '52 Weeks: Quarter 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2734a78791001d1576b9140c836', link: 'https://album.link/53wQ3', theme: { primary: '#006400', accent: '#90EE90' } },
+                 { id: '5E2lJz2a3hH4gL3t4o5e6R', title: '52 Weeks: Quarter 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2732953258f3c1a329d7c48f94e', link: 'https://album.link/52WQ2', theme: { primary: '#004E89', accent: '#FF6700' } },
+                 { id: '1b8S4h4a3k2h3l4k5k6k7K', title: '52 Weeks: Quarter 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273d2a09c25f7719602330a6c11', link: 'https://song.link/52wq1', theme: { primary: '#4A4A4A', accent: '#FF86C9' } },
+                 { id: '7o2e4n5m6s7d8f9g0h1i2j', title: 'Beats For Streamers Vol 3', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273188820f124b898126e038814', link: 'https://song.link/b4s3', theme: { primary: '#1E3A8A', accent: '#38BDF8' } },
+                 { id: '3l4k5j6h7f8g9h0i1j2k3l', title: 'Beats For Streamers Vol 2', imgUrl: 'https://i.scdn.co/image/ab67616d0000b273ea61f4b2323e0797157a468d', link: 'https://album.link/beatsforstreamersvol2', theme: { primary: '#7C3AED', accent: '#F472B6' } },
+                 { id: '2m3n4o5p6q7r8s9t0u1v2w', title: 'Beats For Streamers Vol 1', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a8a3c89c362089b2f293393', link: 'https://album.link/9hpdtbqmjg70x', theme: { primary: '#0D9488', accent: '#FBBF24' } },
+                 { id: '1d2f3g4h5j6k7l8k9k0k1l', title: 'Late Night Snacks', imgUrl: 'https://i.scdn.co/image/ab67616d0000b27376a267f8b9b469500c59239d', link: 'https://song.link/latenightsnacks', theme: { primary: '#4C1D95', accent: '#EC4899' } },
+                 { id: '9h0i1j2k3l4m5n6o7p8q9r', title: 'The Collection Volume One', imgUrl: 'https://i.scdn.co/image/ab67616d0000b2733a110a1122a61356f1406e3e', link: 'https://song.link/TheCollectionVol1', theme: { primary: '#1F2937', accent: '#F59E0B' } },
             ];
 
             // --- Populate Album Carousel ---
             const carouselContainer = document.getElementById('album-carousel-container');
-            albums.forEach(album => {
-                const albumCard = `
-                    <div class="album-card glass-card rounded-lg p-4 text-center transition-transform duration-300 hover:scale-105 hover:-translate-y-1">
-                        <a href="${album.link}" target="_blank">
-                            <img src="https://album.link/i/${album.imgId}" alt="${album.title}" class="w-full rounded-md mb-4 aspect-square object-cover">
-                            <p class="font-bold text-white">${album.title}</p>
-                        </a>
-                    </div>
-                `;
+            albums.forEach((album, index) => {
+                const albumCard = `<div id="album-${index}" class="album-card glass-card rounded-lg p-4 text-center"><a href="${album.link}" target="_blank"><img src="${album.imgUrl}" alt="${album.title}" class="w-full rounded-md mb-4 aspect-square object-cover"><p class="font-bold text-white">${album.title}</p></a></div>`;
                 carouselContainer.innerHTML += albumCard;
             });
             
+            // --- Carousel & Theming Logic ---
+            const spotifyPlayer = document.getElementById('spotify-player');
+            const carousel = document.getElementById('album-carousel-container');
+            const leftArrow = document.getElementById('carousel-arrow-left');
+            const rightArrow = document.getElementById('carousel-arrow-right');
+            
+            const updateArrows = () => {
+                const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+                leftArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
+                rightArrow.classList.toggle('hidden', carousel.scrollLeft >= maxScrollLeft -1);
+            };
+
+            leftArrow.addEventListener('click', () => { carousel.scrollBy({ left: -carousel.clientWidth * 0.8, behavior: 'smooth' }); });
+            rightArrow.addEventListener('click', () => { carousel.scrollBy({ left: carousel.clientWidth * 0.8, behavior: 'smooth' }); });
+            carousel.addEventListener('scroll', updateArrows);
+            window.addEventListener('resize', updateArrows);
+            updateArrows();
+
+            const albumCards = document.querySelectorAll('.album-card');
+            const themeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    albumCards.forEach(card => card.classList.remove('is-active'));
+                    if (entry.isIntersecting) {
+                        const activeCard = entry.target;
+                        activeCard.classList.add('is-active');
+                        const albumIndex = parseInt(activeCard.id.split('-')[1]);
+                        const activeAlbum = albums[albumIndex];
+                        
+                        // Update CSS variables for theme
+                        document.documentElement.style.setProperty('--theme-primary', activeAlbum.theme.primary);
+                        document.documentElement.style.setProperty('--theme-accent', activeAlbum.theme.accent);
+                        
+                        // Update Spotify Player
+                        spotifyPlayer.src = `https://open.spotify.com/embed/album/${activeAlbum.id}?utm_source=generator&theme=0`;
+                    }
+                });
+            }, { root: carousel, threshold: 0.6 });
+
+            albumCards.forEach(card => themeObserver.observe(card));
+
             // --- Schedule & Countdown Logic ---
             const scheduleContainer = document.getElementById('schedule-container');
             const countdownElement = document.getElementById('countdown');
-            const schedulePST = [
-                { day: 'Morning', hour: 9, duration: 6 }, // Avg duration in hours
-                { day: 'Evening', hour: 21, duration: 6 }, // Avg duration in hours
-            ];
+            const schedulePST = [ { day: 'Morning', hour: 9, duration: 6 }, { day: 'Evening', hour: 21, duration: 6 } ];
             
             function updateScheduleAndTime() {
                 const now = new Date();
-                const timeZone = 'America/Los_Angeles'; // PST/PDT timezone
-
+                const timeZone = 'America/Los_Angeles';
                 let nextStreamDate = null;
-
                 for (let i = 0; i < 7; i++) { 
                     const checkDate = new Date(now);
                     checkDate.setDate(now.getDate() + i);
-                    
                     const dayOfWeek = checkDate.getDay();
                     if (dayOfWeek >= 1 && dayOfWeek <= 5) {
                         for (const slot of schedulePST) {
@@ -382,7 +393,6 @@
                             streamTimeCandidate.setMonth(checkDate.getMonth());
                             streamTimeCandidate.setFullYear(checkDate.getFullYear());
                             streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
-
                             if (streamTimeCandidate > now) {
                                 nextStreamDate = streamTimeCandidate;
                                 i = 7; 
@@ -391,58 +401,36 @@
                         }
                     }
                 }
-                
                 if (nextStreamDate) {
                     const distance = nextStreamDate - now;
                     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
                     countdownElement.innerHTML = `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
                 } else {
                     countdownElement.innerHTML = "Next stream TBD!";
                 }
-
-                if (scheduleContainer.children.length < 2) {
+                if (scheduleContainer.children.length < 2 || scheduleContainer.querySelector('.animate-pulse')) {
                     scheduleContainer.innerHTML = '';
                     schedulePST.forEach(slot => {
-                        const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                        const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone }));
                         todayInPST_Start.setHours(slot.hour, 0, 0, 0);
-                        
                         const localStartTimeString = todayInPST_Start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-
-                        const todayInPST_End = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                        const todayInPST_End = new Date(new Date().toLocaleString('en-US', { timeZone }));
                         todayInPST_End.setHours(slot.hour + slot.duration, 0, 0, 0);
                         const localEndTimeString = todayInPST_End.toLocaleTimeString([], { hour: 'numeric' });
-
-                        const scheduleCard = `
-                            <div class="glass-card rounded-lg p-6 text-center">
-                                <p class="text-lg text-[#FFEB3B] font-semibold">${slot.day} Stream</p>
-                                <p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p>
-                                <p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p>
-                                <p class="text-xs text-stone-500 mt-2">Mon - Fri</p>
-                            </div>
-                        `;
+                        const scheduleCard = `<div class="glass-card rounded-lg p-6 text-center"><p class="text-lg text-yellow-300 font-semibold">${slot.day} Stream</p><p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p><p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p><p class="text-xs text-stone-500 mt-2">Mon - Fri</p></div>`;
                         scheduleContainer.innerHTML += scheduleCard;
                     });
                 }
             }
-
             updateScheduleAndTime();
             setInterval(updateScheduleAndTime, 1000);
 
-            // --- NEW: Animation on Scroll/Load Logic ---
-            // Animate hero elements on page load
+            // --- Animation on Scroll/Load Logic ---
             const onLoadElements = document.querySelectorAll('.animate-on-load');
-            onLoadElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('fade-in-up');
-                    el.classList.remove('hidden-for-animation');
-                }, index * 50 + (parseInt(el.style.animationDelay) || 0));
-            });
-
-            // Animate other sections on scroll
+            onLoadElements.forEach((el, index) => { setTimeout(() => { el.classList.add('fade-in-up'); el.classList.remove('hidden-for-animation'); }, index * 50 + (parseInt(el.style.animationDelay) || 0)); });
             const onScrollElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -453,10 +441,35 @@
                     }
                 });
             }, { threshold: 0.1 });
+            onScrollElements.forEach(el => { observer.observe(el); });
 
-            onScrollElements.forEach(el => {
-                observer.observe(el);
-            });
+            // --- Theming Utility Classes ---
+            const themingClasses = {
+                'hover-theme-accent': { property: 'color', variable: 'var(--theme-accent)' },
+                'hover-theme-primary-bg': { property: 'backgroundColor', variable: 'var(--theme-primary)' },
+                'bg-theme-primary': { property: 'backgroundColor', variable: 'var(--theme-primary)' },
+                'hover-theme-accent-bg': { property: 'backgroundColor', variable: 'var(--theme-accent)'},
+                'text-theme-accent': { property: 'color', variable: 'var(--theme-accent)' },
+                'border-theme-primary': { property: 'borderColor', variable: 'var(--theme-primary)' },
+                'shadow-theme-primary/20': { property: 'boxShadow', variable: `0 10px 15px -3px var(--theme-primary)`},
+                'hover-theme-accent-bg/20': { property: 'backgroundColor', variable: 'var(--theme-accent)'},
+                'hover-shadow-theme-accent/20': { property: 'boxShadow', variable: `0 10px 15px -3px var(--theme-accent)`},
+                'border-theme-primary/20': { property: 'borderColor', variable: 'var(--theme-primary)'},
+                'hover-theme-primary': { property: 'color', variable: 'var(--theme-primary)'},
+            };
+
+            for (const className in themingClasses) {
+                const elements = document.querySelectorAll(`.${className}`);
+                elements.forEach(el => {
+                    const { property, variable } = themingClasses[className];
+                    if (className.startsWith('hover')) {
+                        el.addEventListener('mouseenter', () => el.style[property] = variable);
+                        el.addEventListener('mouseleave', () => el.style[property] = '');
+                    } else {
+                        el.style[property] = variable;
+                    }
+                });
+            }
         });
     </script>
 </body>
