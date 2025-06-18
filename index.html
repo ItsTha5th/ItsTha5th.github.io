@@ -72,8 +72,18 @@
         body { font-family: 'Inter', sans-serif; background-color: #000000; }
         .hero-gradient { background: radial-gradient(ellipse at top, var(--theme-primary) 0%, #000000 70%); }
         .glass-card { background: rgba(23, 23, 23, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .responsive-iframe { position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; }
-        .responsive-iframe iframe { position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; }
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Enforces 16:9 ratio, eliminating black bars */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         #google_translate_element select { background-color: var(--theme-primary); color: #F3E5F5; border: 1px solid var(--theme-accent); border-radius: 8px; padding: 8px 12px; font-weight: bold; cursor: pointer; }
         #google_translate_element select:hover { background-color: var(--theme-accent); }
         .skiptranslate { display: none !important; }
@@ -99,7 +109,7 @@
             </a>
             <!-- Desktop Menu -->
             <div id="desktop-menu" class="hidden md:flex items-center space-x-6 text-lg">
-                <a href="#stream" class="hover:text-pink-400 transition-colors">Stream</a>
+                <a href="#home" class="hover:text-pink-400 transition-colors">Live</a>
                 <a href="#music" class="hover:text-pink-400 transition-colors">Music</a>
                 <a href="#schedule" class="hover:text-pink-400 transition-colors">Schedule</a>
                 <a href="#about" class="hover:text-pink-400 transition-colors">About</a>
@@ -119,7 +129,7 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/90 absolute w-full">
-             <a href="#stream" class="block text-center py-4 text-lg hover:bg-purple-800">Stream</a>
+             <a href="#home" class="block text-center py-4 text-lg hover:bg-purple-800">Live</a>
             <a href="#music" class="block text-center py-4 text-lg hover:bg-purple-800">Music</a>
             <a href="#schedule" class="block text-center py-4 text-lg hover:bg-purple-800">Schedule</a>
             <a href="#about" class="block text-center py-4 text-lg hover:bg-purple-800">About</a>
@@ -131,31 +141,19 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="hero-gradient py-20 text-center">
+        <section id="home" class="hero-gradient py-20 text-center">
             <div class="hero-content container mx-auto px-6">
-                 <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
-                <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
-                <div class="responsive-iframe max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
-                    <iframe src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true" title="Tha5thElement Channel Trailer"></iframe>
+                 <h1 id="hero-title" class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
+                <p id="hero-subtitle" class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
+                <div class="video-container max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
+                    <iframe id="trailer-player" src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true" title="Tha5thElement Channel Trailer"></iframe>
+                    <iframe id="live-player" class="hidden" src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%" title="Tha5thElement Live Stream"></iframe>
                 </div>
                 <div class="mt-12 bg-black/50 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
                     <h2 class="text-2xl font-bold text-pink-400 mb-2">Next Stream Starts In:</h2>
                     <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider flex justify-center items-center gap-1">
                         <span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Twitch Stream Section -->
-        <section id="stream" class="py-20 bg-black animate-on-scroll hidden-for-animation">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">The Main Event</h2>
-                    <p class="text-stone-400 mt-2">Catch me live, or watch the latest VOD. The Cool Kids Club is always open!</p>
-                </div>
-                <div class="responsive-iframe rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20">
-                    <iframe src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%" title="Tha5thElement Live Stream"></iframe>
                 </div>
             </div>
         </section>
@@ -291,6 +289,10 @@
                 const albumGallery = document.getElementById('album-gallery');
                 const countdownElement = document.getElementById('countdown');
                 const scheduleContainer = document.getElementById('schedule-container');
+                const heroTitle = document.getElementById('hero-title');
+                const heroSubtitle = document.getElementById('hero-subtitle');
+                const trailerPlayer = document.getElementById('trailer-player');
+                const livePlayer = document.getElementById('live-player');
 
                 // --- Hamburger Menu Logic ---
                 if (mobileMenuButton && mobileMenu) {
@@ -335,14 +337,14 @@
                         const altText = `Album cover for ${album.title} by Tha5thElement.`;
                         albumGallery.innerHTML += `
                             <a href="${album.link}" target="_blank" class="block group transform transition-transform hover:-translate-y-2">
-                                <img src="${album.imgUrl}" alt="${altText}" class="w-full rounded-md aspect-square object-cover shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/30 transition-shadow">
+                                <img src="${album.imgUrl}" alt="${altText}" class="w-full rounded-md aspect-square object-cover shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/30 transition-shadow" loading="lazy">
                                 <p class="text-sm font-bold text-white text-center mt-2 group-hover:text-pink-400 transition-colors">${album.title}</p>
                             </a>
                         `;
                     });
                 }
 
-                // --- Countdown & Schedule Logic ---
+                // --- Live Status & Countdown & Schedule Logic ---
                 const schedulePST = [{ day: 'Morning', hour: 9, duration: 6 }, { day: 'Evening', hour: 21, duration: 6 }];
                 
                 function updateCountdownDigit(span, newValue) {
@@ -353,16 +355,43 @@
                     }
                 }
 
-                function updateScheduleAndTime() {
+                function checkLiveAndSchedule() {
                     const now = new Date();
+                    const nowPST = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                    const dayPST = nowPST.getDay();
+                    const hourPST = nowPST.getHours();
+                    
+                    let isLive = false;
+                    // Check for streams on Monday to Friday
+                    if (dayPST >= 1 && dayPST <= 5) {
+                        // Morning stream (9am to 3pm PST)
+                        if (hourPST >= 9 && hourPST < 15) isLive = true;
+                        // Evening stream (9pm to midnight PST)
+                        if (hourPST >= 21) isLive = true;
+                    }
+                    // Check for spillover from evening streams (e.g., Fri 9pm -> Sat 3am)
+                    // This covers Tue-Sat from midnight to 3am PST
+                    if (dayPST >= 2 && dayPST <= 6) {
+                        if (hourPST < 3) isLive = true;
+                    }
+                    
+                    // Update Hero based on live status
+                    if (trailerPlayer && livePlayer) {
+                        trailerPlayer.classList.toggle('hidden', isLive);
+                        livePlayer.classList.toggle('hidden', !isLive);
+                        heroTitle.textContent = isLive ? "LIVE NOW!" : "Streamer, Gamer, Creative";
+                        heroSubtitle.textContent = isLive ? "The Cool Kids Club is in session. Join the chat!" : "From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!";
+                    }
+
+                    // --- Countdown Logic ---
                     let nextStreamDate = null;
                     for (let i = 0; i < 7; i++) {
                         const checkDate = new Date(now);
                         checkDate.setDate(now.getDate() + i);
-                        const dayOfWeek = checkDate.getDay();
-                        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Mon-Fri
+                        const dayOfWeek = new Date(checkDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).getDay();
+                        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
                             for (const slot of schedulePST) {
-                                let streamTimeCandidate = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+                                let streamTimeCandidate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
                                 streamTimeCandidate.setFullYear(checkDate.getFullYear(), checkDate.getMonth(), checkDate.getDate());
                                 streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
                                 if (streamTimeCandidate > now) {
@@ -372,26 +401,32 @@
                             }
                         }
                     }
+
                     if (countdownElement) {
                         const spans = countdownElement.querySelectorAll('span');
                         if (nextStreamDate && spans.length === 4) {
                             const distance = nextStreamDate - now;
-                            const time = {
-                                d: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0'),
-                                h: String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0'),
-                                m: String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0'),
-                                s: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0')
-                            };
-                            updateCountdownDigit(spans[0], time.d);
-                            updateCountdownDigit(spans[1], time.h);
-                            updateCountdownDigit(spans[2], time.m);
-                            updateCountdownDigit(spans[3], time.s);
+                            if (distance > 0) {
+                                const time = {
+                                    d: String(Math.floor(distance / 86400000)).padStart(2, '0'),
+                                    h: String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0'),
+                                    m: String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0'),
+                                    s: String(Math.floor((distance % 60000) / 1000)).padStart(2, '0')
+                                };
+                                updateCountdownDigit(spans[0], time.d);
+                                updateCountdownDigit(spans[1], time.h);
+                                updateCountdownDigit(spans[2], time.m);
+                                updateCountdownDigit(spans[3], time.s);
+                            } else {
+                                spans.forEach(span => span.textContent = '00');
+                            }
                         } else if(spans.length) {
                             spans.forEach(span => span.textContent = '--');
                         }
                     }
-
-                    if (scheduleContainer && (scheduleContainer.children.length < 2 || scheduleContainer.querySelector('.animate-pulse'))) {
+                    
+                    // --- Schedule Update Logic ---
+                    if (scheduleContainer && (scheduleContainer.children.length < 1 || scheduleContainer.querySelector('.animate-pulse'))) {
                         scheduleContainer.innerHTML = '';
                         schedulePST.forEach(slot => {
                             const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
@@ -405,8 +440,8 @@
                     }
                 }
                 
-                updateScheduleAndTime();
-                setInterval(updateScheduleAndTime, 1000);
+                checkLiveAndSchedule();
+                setInterval(checkLiveAndSchedule, 1000);
 
                 // --- Animation on Scroll/Load Logic ---
                 const observer = new IntersectionObserver((entries) => {
