@@ -94,7 +94,7 @@
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-40">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl md:text-3xl font-bold text-white tracking-tighter flex items-center gap-3">
-                <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Tha5thElement's rabbit skull logo" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
+                <img src="https://raw.githubusercontent.com/ItsTha5th/ItsTha5th.github.io/master/imgs/logo.png" alt="Tha5thElement's logo, a rabbit skull inside a military-style patch." width="40" height="40" class="w-10 h-10 rounded-full" style="object-fit: cover; object-position: center 75%;">
                 Tha<span style="color: var(--theme-accent);">5th</span>Element
             </a>
             <!-- Desktop Menu -->
@@ -112,7 +112,7 @@
                 <div id="translate_button_container">
                     <div id="google_translate_element"></div>
                 </div>
-                <button id="mobile-menu-button" class="md:hidden text-white text-2xl" aria-label="Open navigation menu">
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl" aria-label="Open navigation menu" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -169,6 +169,16 @@
                 </div>
                 <div id="schedule-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     <div class="glass-card rounded-lg p-6 text-center animate-pulse"><p class="text-2xl font-bold text-white mt-1">Loading schedule...</p></div>
+                     <noscript>
+                        <div class="glass-card rounded-lg p-6 text-center">
+                            <p class="text-lg text-yellow-300 font-semibold">Morning Stream</p>
+                            <p class="text-3xl font-bold text-white mt-1">9:00 AM PST</p>
+                        </div>
+                        <div class="glass-card rounded-lg p-6 text-center">
+                            <p class="text-lg text-yellow-300 font-semibold">Evening Stream</p>
+                            <p class="text-3xl font-bold text-white mt-1">9:00 PM PST</p>
+                        </div>
+                    </noscript>
                 </div>
             </div>
         </section>
@@ -183,7 +193,7 @@
                  <div class="max-w-4xl mx-auto mb-16">
                      <iframe id="spotify-player" style="border-radius:12px" src="https://open.spotify.com/embed/album/7fWOh38ZpIyGULlegbxULj?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify player for latest album"></iframe>
                  </div>
-                 <h3 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Discography</h3>
+                 <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Discography</h2>
                 <div id="album-gallery" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 max-w-6xl mx-auto">
                     <!-- Album art will be inserted here by JavaScript -->
                 </div>
@@ -198,10 +208,10 @@
                     <p class="text-stone-400 mt-2">Every little bit helps me continue doing what I love. Thank you!</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-pink-500/20"><i class="fas fa-tshirt text-4xl mb-3 text-pink-400"></i><p class="text-xl font-bold text-white">Merch Store</p></a>
-                    <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-blue-400/20"><i class="fas fa-coffee text-4xl text-blue-400 mb-3"></i><p class="text-xl font-bold text-white">Tip on Ko-fi</p></a>
-                    <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-yellow-400/20"><i class="fa-brands fa-paypal text-4xl text-yellow-400 mb-3"></i><p class="text-xl font-bold text-white">PayPal</p></a>
-                    <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10"><i class="fas fa-gamepad text-4xl text-white mb-3"></i><p class="text-xl font-bold text-white">Game Deals</p></a>
+                    <a href="http://tha5thelement.com/" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-pink-500/20"><i class="fas fa-tshirt text-4xl mb-3 text-pink-400" aria-hidden="true"></i><p class="text-xl font-bold text-white">Merch Store</p></a>
+                    <a href="https://ko-fi.com/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-blue-400/20"><i class="fas fa-coffee text-4xl text-blue-400 mb-3" aria-hidden="true"></i><p class="text-xl font-bold text-white">Tip on Ko-fi</p></a>
+                    <a href="https://www.paypal.com/paypalme/tha5thelement" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-yellow-400/20"><i class="fa-brands fa-paypal text-4xl text-yellow-400 mb-3" aria-hidden="true"></i><p class="text-xl font-bold text-white">PayPal</p></a>
+                    <a href="http://www.gamebillet.com/?affiliate=d12798c3-49b8-4332-8187-5ba6f9211811" target="_blank" class="glass-card rounded-lg p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10"><i class="fas fa-gamepad text-4xl text-white mb-3" aria-hidden="true"></i><p class="text-xl font-bold text-white">Game Deals</p></a>
                 </div>
             </div>
         </section>
@@ -220,10 +230,10 @@
                         </div>
                      </div>
                      <div class="lg:col-span-1 glass-card rounded-xl p-8 shadow-lg">
-                         <h3 class="text-2xl font-bold text-white mb-4">My Gear</h3>
+                         <h2 class="text-2xl font-bold text-white mb-4">My Gear</h2>
                          <div class="space-y-6">
                             <div>
-                                <h4 class="font-bold text-pink-400">Computer Specs</h4>
+                                <h3 class="font-bold text-pink-400 text-xl">Computer Specs</h3>
                                 <ul class="list-disc list-inside text-stone-300">
                                     <li>CPU: Intel Core i5 10400</li>
                                     <li>RAM: 16GB DDR4</li>
@@ -231,7 +241,7 @@
                                 </ul>
                             </div>
                             <div>
-                                <h4 class="font-bold text-pink-400">Audio Specs</h4>
+                                <h3 class="font-bold text-pink-400 text-xl">Audio Specs</h3>
                                 <ul class="list-disc list-inside text-stone-300">
                                     <li>Mic: Audio-Technica AT1035</li>
                                     <li>Interface: Focusrite Scarlett 6i6</li>
@@ -253,12 +263,12 @@
                 <a href="https://link.space/@Tha5thElement" target="_blank" class="bg-purple-700 hover:bg-pink-500 text-white font-bold py-3 px-6 rounded-lg transition-colors hover:scale-105">View All My Links</a>
              </div>
             <div class="flex justify-center items-center space-x-6 mb-6">
-                <a href="https://twitter.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-400 transition-transform hover:-translate-y-1 text-3xl" aria-label="Twitter profile"><i class="fa-brands fa-twitter"></i></a>
-                <a href="https://www.youtube.com/@Tha5thElement" target="_blank" class="text-stone-400 hover:text-red-500 transition-transform hover:-translate-y-1 text-3xl" aria-label="YouTube channel"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover:text-pink-400 transition-transform hover:-translate-y-1 text-3xl" aria-label="Instagram profile"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover:text-purple-600 transition-transform hover:-translate-y-1 text-3xl" aria-label="Twitch channel"><i class="fa-brands fa-twitch"></i></a>
-                <a href="https://tiktok.com/@tha5thelement" target="_blank" class="text-stone-400 hover:text-white transition-transform hover:-translate-y-1 text-3xl" aria-label="TikTok profile"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://facebook.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-600 transition-transform hover:-translate-y-1 text-3xl" aria-label="Facebook page"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-400 transition-transform hover:-translate-y-1 text-3xl" aria-label="Twitter profile"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/@Tha5thElement" target="_blank" class="text-stone-400 hover:text-red-500 transition-transform hover:-translate-y-1 text-3xl" aria-label="YouTube channel"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://instagram.com/tha5thelement" target="_blank" class="text-stone-400 hover:text-pink-400 transition-transform hover:-translate-y-1 text-3xl" aria-label="Instagram profile"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" class="text-stone-400 hover:text-purple-600 transition-transform hover:-translate-y-1 text-3xl" aria-label="Twitch channel"><i class="fa-brands fa-twitch" aria-hidden="true"></i></a>
+                <a href="https://tiktok.com/@tha5thelement" target="_blank" class="text-stone-400 hover:text-white transition-transform hover:-translate-y-1 text-3xl" aria-label="TikTok profile"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+                <a href="https://facebook.com/Tha5thElement" target="_blank" class="text-stone-400 hover:text-blue-600 transition-transform hover:-translate-y-1 text-3xl" aria-label="Facebook page"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
             </div>
              <p class="text-center text-stone-500">&copy; <span id="copyright-year"></span> Tha5thElement. All Rights Reserved.</p>
         </div>
@@ -284,9 +294,15 @@
 
                 // --- Hamburger Menu Logic ---
                 if (mobileMenuButton && mobileMenu) {
-                    mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+                    mobileMenuButton.addEventListener('click', () => {
+                        const isExpanded = mobileMenu.classList.toggle('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                     });
                     mobileMenu.querySelectorAll('a').forEach(link => {
-                        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuButton.setAttribute('aria-expanded', 'false');
+                        });
                     });
                 }
 
@@ -316,7 +332,7 @@
                 // --- Populate Album Gallery ---
                 if (albumGallery) {
                     albums.forEach((album) => {
-                        const altText = `Album cover for ${album.title}`;
+                        const altText = `Album cover for ${album.title} by Tha5thElement.`;
                         albumGallery.innerHTML += `
                             <a href="${album.link}" target="_blank" class="block group transform transition-transform hover:-translate-y-2">
                                 <img src="${album.imgUrl}" alt="${altText}" class="w-full rounded-md aspect-square object-cover shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/30 transition-shadow">
