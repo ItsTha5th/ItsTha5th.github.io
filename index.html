@@ -145,16 +145,18 @@
             <div class="hero-content container mx-auto px-6">
                  <h1 id="hero-title" class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
                 <p id="hero-subtitle" class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
-                <div class="video-container max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load" style="animation-delay: 400ms;">
-                    <iframe id="trailer-player" src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true" title="Tha5thElement Channel Trailer"></iframe>
-                    <iframe id="live-player" class="hidden" src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%" title="Tha5thElement Live Stream"></iframe>
-                </div>
-                <div class="mt-12 bg-black/50 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
-                    <h2 class="text-2xl font-bold text-pink-400 mb-2">Next Stream Starts In:</h2>
-                    <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider flex justify-center items-center gap-1">
-                        <span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>
+                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="video-container block max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load cursor-pointer transition-transform hover:scale-[1.02]" style="animation-delay: 400ms;">
+                    <iframe id="trailer-player" src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true" title="Tha5thElement Channel Trailer" class="pointer-events-none"></iframe>
+                    <iframe id="live-player" class="hidden pointer-events-none" src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%" title="Tha5thElement Live Stream"></iframe>
+                </a>
+                 <a href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="block mt-12 max-w-2xl mx-auto hidden-for-animation animate-on-load transition-transform hover:scale-105" style="animation-delay: 600ms;">
+                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6">
+                        <h2 class="text-2xl font-bold text-pink-400 mb-2">Next Stream Starts In:</h2>
+                        <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider flex justify-center items-center gap-1">
+                            <span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>
 
