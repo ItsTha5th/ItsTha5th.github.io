@@ -145,18 +145,20 @@
             <div class="hero-content container mx-auto px-6">
                  <h1 id="hero-title" class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 hidden-for-animation animate-on-load">Streamer, Gamer, Creative</h1>
                 <p id="hero-subtitle" class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto mb-8 hidden-for-animation animate-on-load" style="animation-delay: 200ms;">From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!</p>
-                <a href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="video-container block max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load cursor-pointer transition-transform hover:scale-[1.02]" style="animation-delay: 400ms;">
+                <a id="video-link" href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="video-container block max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-purple-700 shadow-2xl shadow-purple-500/20 hidden-for-animation animate-on-load cursor-pointer transition-transform hover:scale-[1.02]" style="animation-delay: 400ms;">
                     <iframe id="trailer-player" src="https://player.twitch.tv/?video=2023819489&parent=itstha5th.github.io&parent=localhost&autoplay=true&muted=true" frameborder="0" scrolling="no" allowfullscreen="true" title="Tha5thElement Channel Trailer" class="pointer-events-none"></iframe>
                     <iframe id="live-player" class="hidden pointer-events-none" src="https://player.twitch.tv/?channel=tha5thelement&parent=itstha5th.github.io&parent=localhost" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%" title="Tha5thElement Live Stream"></iframe>
                 </a>
-                 <a href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="block mt-12 max-w-2xl mx-auto hidden-for-animation animate-on-load transition-transform hover:scale-105" style="animation-delay: 600ms;">
-                    <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6">
-                        <h2 class="text-2xl font-bold text-pink-400 mb-2">Next Stream Starts In:</h2>
-                        <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider flex justify-center items-center gap-1">
-                            <span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>
+                 <div id="countdown-wrapper" class="mt-12 max-w-2xl mx-auto hidden-for-animation animate-on-load" style="animation-delay: 600ms;">
+                    <a id="countdown-link" href="https://www.twitch.tv/Tha5thElement" target="_blank" aria-label="Watch on Twitch" class="block transition-transform hover:scale-105">
+                        <div class="bg-black/50 backdrop-blur-sm rounded-xl p-6">
+                            <h2 id="countdown-title" class="text-2xl font-bold text-pink-400 mb-2">Next Stream Starts In:</h2>
+                            <div id="countdown" class="text-4xl md:text-5xl font-bold text-white tabular-nums tracking-wider flex justify-center items-center gap-1">
+                                <span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -290,6 +292,8 @@
                 const copyrightYear = document.getElementById('copyright-year');
                 const albumGallery = document.getElementById('album-gallery');
                 const countdownElement = document.getElementById('countdown');
+                const countdownWrapper = document.getElementById('countdown-wrapper');
+                const countdownTitle = document.getElementById('countdown-title');
                 const scheduleContainer = document.getElementById('schedule-container');
                 const heroTitle = document.getElementById('hero-title');
                 const heroSubtitle = document.getElementById('hero-subtitle');
@@ -346,8 +350,10 @@
                     });
                 }
 
-                // --- Live Status & Countdown & Schedule Logic ---
+                // --- Live Status, Countdown, & Schedule ---
                 const schedulePST = [{ day: 'Morning', hour: 9, duration: 6 }, { day: 'Evening', hour: 21, duration: 6 }];
+                let lastApiCheck = 0;
+                let isTrulyLive = false;
                 
                 function updateCountdownDigit(span, newValue) {
                     if (span && span.textContent !== newValue) {
@@ -356,94 +362,107 @@
                         span.addEventListener('animationend', () => span.classList.remove('countdown-digit-flipper'), { once: true });
                     }
                 }
-
-                function checkLiveAndSchedule() {
+                
+                async function masterUpdate() {
                     const now = new Date();
-                    const nowPST = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
-                    const dayPST = nowPST.getDay();
-                    const hourPST = nowPST.getHours();
                     
-                    let isLive = false;
-                    // Check for streams on Monday to Friday
-                    if (dayPST >= 1 && dayPST <= 5) {
-                        // Morning stream (9am to 3pm PST)
-                        if (hourPST >= 9 && hourPST < 15) isLive = true;
-                        // Evening stream (9pm to midnight PST)
-                        if (hourPST >= 21) isLive = true;
-                    }
-                    // Check for spillover from evening streams (e.g., Fri 9pm -> Sat 3am)
-                    // This covers Tue-Sat from midnight to 3am PST
-                    if (dayPST >= 2 && dayPST <= 6) {
-                        if (hourPST < 3) isLive = true;
-                    }
-                    
-                    // Update Hero based on live status
-                    if (trailerPlayer && livePlayer) {
-                        trailerPlayer.classList.toggle('hidden', isLive);
-                        livePlayer.classList.toggle('hidden', !isLive);
-                        heroTitle.textContent = isLive ? "LIVE NOW!" : "Streamer, Gamer, Creative";
-                        heroSubtitle.textContent = isLive ? "The Cool Kids Club is in session. Join the chat!" : "From producing beats to defeating bosses. Welcome to my corner of the internet. Check out the trailer below!";
+                    if (now.getTime() - lastApiCheck > 60000) {
+                        lastApiCheck = now.getTime();
+                        try {
+                            const response = await fetch(`https://twitch-proxy.freecodecamp.rocks/twitch-api/streams/tha5thelement`);
+                            if (response.ok) {
+                                const data = await response.json();
+                                isTrulyLive = !!data.stream;
+                            } else { isTrulyLive = false; }
+                        } catch (error) {
+                            console.error("Could not fetch Twitch live status:", error);
+                            isTrulyLive = false;
+                        }
                     }
 
-                    // --- Countdown Logic ---
+                    if (isTrulyLive) {
+                        trailerPlayer.classList.add('hidden');
+                        livePlayer.classList.remove('hidden');
+                        heroTitle.textContent = "LIVE NOW!";
+                        heroSubtitle.textContent = "The Cool Kids Club is in session. Join the chat!";
+                        countdownWrapper.classList.remove('hidden');
+                        countdownTitle.innerHTML = '&nbsp;';
+                        countdown.innerHTML = `<span class="text-4xl md:text-5xl font-extrabold text-red-500 animate-pulse">LIVE!</span>`;
+                        return;
+                    }
+                    
+                    trailerPlayer.classList.remove('hidden');
+                    livePlayer.classList.add('hidden');
+                    heroTitle.textContent = "Streamer, Gamer, Creative";
+                    heroSubtitle.textContent = "From producing beats to defeating bosses...";
+
                     let nextStreamDate = null;
                     for (let i = 0; i < 7; i++) {
-                        const checkDate = new Date(now);
+                        const checkDate = new Date();
                         checkDate.setDate(now.getDate() + i);
-                        const dayOfWeek = new Date(checkDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).getDay();
-                        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                        const pstDay = new Date(checkDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles'})).getDay();
+                        
+                        if (pstDay >= 1 && pstDay <= 5) {
                             for (const slot of schedulePST) {
                                 let streamTimeCandidate = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
                                 streamTimeCandidate.setFullYear(checkDate.getFullYear(), checkDate.getMonth(), checkDate.getDate());
                                 streamTimeCandidate.setHours(slot.hour, 0, 0, 0);
                                 if (streamTimeCandidate > now) {
                                     nextStreamDate = streamTimeCandidate;
-                                    i = 7; break;
+                                    break;
                                 }
                             }
                         }
+                        if(nextStreamDate) break;
                     }
 
-                    if (countdownElement) {
-                        const spans = countdownElement.querySelectorAll('span');
-                        if (nextStreamDate && spans.length === 4) {
-                            const distance = nextStreamDate - now;
-                            if (distance > 0) {
-                                const time = {
-                                    d: String(Math.floor(distance / 86400000)).padStart(2, '0'),
-                                    h: String(Math.floor((distance % 86400000) / 3600000)).padStart(2, '0'),
-                                    m: String(Math.floor((distance % 3600000) / 60000)).padStart(2, '0'),
-                                    s: String(Math.floor((distance % 60000) / 1000)).padStart(2, '0')
-                                };
-                                updateCountdownDigit(spans[0], time.d);
-                                updateCountdownDigit(spans[1], time.h);
-                                updateCountdownDigit(spans[2], time.m);
-                                updateCountdownDigit(spans[3], time.s);
-                            } else {
-                                spans.forEach(span => span.textContent = '00');
+                    if (countdownWrapper && nextStreamDate) {
+                        const timeUntilNext = nextStreamDate - now;
+                        
+                        if (timeUntilNext < (30 * 60 * 1000) && timeUntilNext > -(60 * 60 * 1000)) {
+                            countdownWrapper.classList.remove('hidden');
+                            countdownTitle.textContent = "Stream Starting Soon!";
+                            countdown.innerHTML = `<span class="text-3xl tracking-normal">Click to join!</span>`;
+                        } else {
+                            countdownWrapper.classList.remove('hidden');
+                            countdownTitle.textContent = "Next Stream Starts In:";
+                            if (countdown.querySelectorAll('span').length !== 4) {
+                                countdown.innerHTML = `<span>--</span>:<span>--</span>:<span>--</span>:<span>--</span>`;
                             }
-                        } else if(spans.length) {
-                            spans.forEach(span => span.textContent = '--');
+                            const spans = countdown.querySelectorAll('span');
+                            const time = {
+                                d: String(Math.floor(timeUntilNext / 86400000)).padStart(2, '0'),
+                                h: String(Math.floor((timeUntilNext % 86400000) / 3600000)).padStart(2, '0'),
+                                m: String(Math.floor((timeUntilNext % 3600000) / 60000)).padStart(2, '0'),
+                                s: String(Math.floor((timeUntilNext % 60000) / 1000)).padStart(2, '0')
+                            };
+                            updateCountdownDigit(spans[0], time.d);
+                            updateCountdownDigit(spans[1], time.h);
+                            updateCountdownDigit(spans[2], time.m);
+                            updateCountdownDigit(spans[3], time.s);
                         }
+                    } else if (countdownWrapper) {
+                         countdownWrapper.classList.remove('hidden');
+                         countdownTitle.textContent = "Next Stream:";
+                         countdown.innerHTML = `<span class="text-3xl tracking-normal">To Be Announced</span>`;
                     }
-                    
-                    // --- Schedule Update Logic ---
-                    if (scheduleContainer && (scheduleContainer.children.length < 1 || scheduleContainer.querySelector('.animate-pulse'))) {
+                }
+                
+                function updateSchedule() {
+                     if (scheduleContainer && (scheduleContainer.children.length < 1 || scheduleContainer.querySelector('.animate-pulse'))) {
                         scheduleContainer.innerHTML = '';
                         schedulePST.forEach(slot => {
                             const todayInPST_Start = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
                             todayInPST_Start.setHours(slot.hour, 0, 0, 0);
                             const localStartTimeString = todayInPST_Start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-                            const todayInPST_End = new Date(todayInPST_Start.getTime());
-                            todayInPST_End.setHours(todayInPST_Start.getHours() + slot.duration);
-                            const localEndTimeString = todayInPST_End.toLocaleTimeString([], { hour: 'numeric' });
-                            scheduleContainer.innerHTML += `<div class="glass-card rounded-lg p-6 text-center"><p class="text-lg text-yellow-300 font-semibold">${slot.day} Stream</p><p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p><p class="text-stone-400 text-md mt-1">Ends around ${localEndTimeString}</p><p class="text-xs text-stone-500 mt-2">Mon - Fri</p></div>`;
+                            scheduleContainer.innerHTML += `<div class="glass-card rounded-lg p-6 text-center"><p class="text-lg text-yellow-300 font-semibold">${slot.day} Stream</p><p class="text-3xl font-bold text-white mt-1">${localStartTimeString}</p><p class="text-stone-400 text-md mt-1">At least 4 hours long</p><p class="text-xs text-stone-500 mt-2">Mon - Fri</p></div>`;
                         });
                     }
                 }
-                
-                checkLiveAndSchedule();
-                setInterval(checkLiveAndSchedule, 1000);
+
+                updateSchedule();
+                masterUpdate();
+                setInterval(masterUpdate, 1000);
 
                 // --- Animation on Scroll/Load Logic ---
                 const observer = new IntersectionObserver((entries) => {
